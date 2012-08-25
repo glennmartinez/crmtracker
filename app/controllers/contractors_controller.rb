@@ -1,0 +1,35 @@
+class ContractorsController < ApplicationController
+
+
+def index
+
+	@contractors = Contractor.all
+	
+end
+
+def new
+	@contractor = Contractor.new
+end
+
+def create
+	@contractor = Contractor.new(params[:contractor])
+	if @contractor.save
+		redirect_to @contractor
+	else
+		render :action => 'new'
+	end
+end
+
+def show
+	@contractor = Contractor.find(params[:id])
+end
+
+def update
+	
+end
+
+def delete
+	
+end
+
+end

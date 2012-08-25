@@ -1,0 +1,14 @@
+
+
+<% @contractors.each do |conts| %>
+
+	<%= conts.firstname %>
+	<%= conts.surname %>
+	<%= conts.email %>
+
+
+
+<% end %>
+<%= collection_select(:post,:firstname, Contractor.find(:all), :id, :firstname) %>
+
+<%= link_to "Create Contractor", new_contractor_path %>
