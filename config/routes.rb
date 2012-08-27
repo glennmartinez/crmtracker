@@ -8,6 +8,8 @@ Crmtracker::Application.routes.draw do
 
   resources :quotes
 
+  post "/quote/add_contractor" => "quotes#add_contractor"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

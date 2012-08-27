@@ -1,5 +1,8 @@
 class Quote < ActiveRecord::Base
-  attr_accessible :name, :status, :contractor_attributes
+  attr_accessible :name, :status
+  # attr_accessible :contractor
+
+  attr_protected :id
 
   belongs_to :project
 

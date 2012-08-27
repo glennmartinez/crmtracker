@@ -1,4 +1,5 @@
 class QuotesController < ApplicationController
+	before_filter :load_contractors
 
 def index
 
@@ -24,6 +25,19 @@ def new
 
 end
 
+def add_contractor
+	@quote = Quote.find(params[:quote_id])
+	@contractor = Contractor.find(params[:contractor_id])
+	@quote.contractors << @contractor
+
+	if @quote.save
+		redirect_to @quote, notice: "contractor was added"
+	else
+		render :show, notice: "Sorry, something went aweful"
+	end
+
+end
+
 def create
 	@quote = Quote.new(params[:quote])
 
@@ -42,4 +56,8 @@ def show
 	@quote = Quote.find(params[:id])
 end
 
+private
+def load_contractors
+	@contractors = Contractor.all
+end
 end
