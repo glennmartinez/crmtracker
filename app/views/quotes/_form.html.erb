@@ -1,0 +1,24 @@
+<%= form_for (@quote) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :status %>
+  <%= f.text_field :status %>
+  
+<%= f.fields_for :contractor do |builder| %>
+
+  <div class="field">
+    <%= builder.label "Contractor Name" %><br />
+    <%= builder.text_field :firstname %>
+    <%= builder.label "Contractor Surname" %><br />
+    <%= builder.text_field :surname %>
+    <%= builder.label :email %><br />
+    <%= builder.text_field :email %>
+    
+  </div>
+<% end %>
+<%= f.submit %>
+
+<% end %>
+
+ 
