@@ -54,9 +54,12 @@ ActiveRecord::Schema.define(:version => 20120825102257) do
   create_table "quotes", :force => true do |t|
     t.string   "name"
     t.string   "status"
+    t.integer  "project_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "quotes", ["project_id"], :name => "index_quotes_on_project_id"
 
   create_table "quoteships", :force => true do |t|
     t.integer  "quote_id"

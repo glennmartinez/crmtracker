@@ -3,7 +3,9 @@ Crmtracker::Application.routes.draw do
     resources :projects
   end
 
-  resources :projects
+  resources :projects do
+    resources :quotes
+  end
   resources :contractors
 
   resources :quotes

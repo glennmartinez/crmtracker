@@ -1,17 +1,19 @@
 class QuotesController < ApplicationController
-	before_filter :load_contractors
+	before_filter :load_contractors 
+	before_filter :find_project, :only => :new
 
 def index
 
 	@quotes = Quote.all
+
 	
 end
 
 def new
-	@quote = Quote.new
+	# @quote = Quote.new
+	@quote = @project.quotes.build
 	@quote.contractors.build 
-	# @quote.build_project
-	# @contractor = Contractor.new
+
 	respond_to do |format|
 
     format.html # new.html.erb
@@ -19,9 +21,6 @@ def new
     format.json { render json: @quote }
 
   end
-
-
-
 
 end
 
@@ -39,8 +38,8 @@ def add_contractor
 end
 
 def create
-	@quote = Quote.new(params[:quote])
-
+	# @quote = Quote.new(params[:quote])
+		@quote = @project.quote.build(params[:quote])
     respond_to do |format|
       if @quote.save
         format.html { redirect_to @quote, notice: 'Project was successfully created.'  }
@@ -59,5 +58,10 @@ end
 private
 def load_contractors
 	@contractors = Contractor.all
+end
+
+private
+def find_project
+	@project = Project.find(params[:project_id])
 end
 end
