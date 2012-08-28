@@ -1,6 +1,7 @@
 class QuotesController < ApplicationController
 	before_filter :load_contractors 
-	before_filter :find_project, :only => :new
+	before_filter :find_project, :only => [:new, :create]
+
 
 def index
 
@@ -39,7 +40,7 @@ end
 
 def create
 	# @quote = Quote.new(params[:quote])
-		@quote = @project.quote.build(params[:quote])
+		@quote = @project.quotes.build(params[:quote])
     respond_to do |format|
       if @quote.save
         format.html { redirect_to @quote, notice: 'Project was successfully created.'  }
