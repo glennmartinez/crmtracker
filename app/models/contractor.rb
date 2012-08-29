@@ -9,4 +9,13 @@ class Contractor < ActiveRecord::Base
   has_many :quotes, :through => :quoteships
   
 
+
+	def self.search(search)
+	  if search
+	    where('firstname LIKE ?', "%#{search}%")
+	  else
+	    scoped
+  	  end
+    end
+
 end

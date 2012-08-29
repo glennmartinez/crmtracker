@@ -24,7 +24,7 @@
 
 
 <b>Other contractors </b>
-<table>
+<!-- <table>
 <% @contractors.each do | contractor | %>
 <tr>
 	<td><%= contractor.firstname %></td>
@@ -37,4 +37,25 @@
 	</td>
 </tr>
 <% end %>
-</table>
+</table> -->
+<%= form_tag quotes_path, :method => 'get', :id => "contractors_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <br><br><br>
+  <div id="contractors"><%= render 'contractors' %></div>
+<% end %>
+
+
+<script type="text/javascript">
+
+ $(function() {
+  $("#contractors_search input").keyup(function() {
+    $.get($("#contractors_search").attr("action"), $("#contractors_search").serialize(), null, "script");
+    return false;
+  });
+});
+
+
+</script>

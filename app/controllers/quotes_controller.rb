@@ -6,6 +6,7 @@ class QuotesController < ApplicationController
 def index
 
 	@quotes = Quote.all
+	@contractors = Contractor.search(params[:search])   
 
 	
 end
