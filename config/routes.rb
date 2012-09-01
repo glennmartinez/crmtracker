@@ -6,11 +6,16 @@ Crmtracker::Application.routes.draw do
   resources :projects do
     resources :quotes
   end
-  resources :contractors
+  resources :contractors do
+    resources :quotes
+  end
+ 
 
   resources :quotes
 
   post "/quote/add_contractor" => "quotes#add_contractor"
+
+  get "quote/:quote_id/get_contractor" => "quotes#get_contractor", :as => :get_contractor
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
