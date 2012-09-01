@@ -38,15 +38,15 @@
 </tr>
 <% end %>
 </table> -->
-<%= form_tag quotes_path, :method => 'get', :id => "contractors_search" do %>
+<%= form_tag get_contractor_path(@quote), :method => 'get', :id => "contractors_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
-  <br><br><br>
-  <div id="contractors"><%= render 'contractors' %></div>
+  
+  
 <% end %>
-
+<div id="contractors"><%= render 'contractors' %></div>
 
 <script type="text/javascript">
 

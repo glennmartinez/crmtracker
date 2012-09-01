@@ -6,7 +6,8 @@ class QuotesController < ApplicationController
 def index
 
 	@quotes = Quote.all
-	@contractors = Contractor.search(params[:search])   
+	   @quote = Quote.find(params[:quote_id])
+	 @contractors = Contractor.search(params[:search])   
 
 	
 end
@@ -39,6 +40,11 @@ def add_contractor
 
 end
 
+def get_contractor
+	 @quote = Quote.find(params[:quote_id])
+	@contractors = Contractor.search(params[:search])   
+end
+
 def create
 	# @quote = Quote.new(params[:quote])
 		@quote = @project.quotes.build(params[:quote])
@@ -55,6 +61,8 @@ end
 
 def show
 	@quote = Quote.find(params[:id])
+	# @contractors = Contractor.search(params[:search])   
+
 end
 
 private
