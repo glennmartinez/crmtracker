@@ -3,7 +3,3 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 
-
-number = 42
-
-alert number
