@@ -31,10 +31,11 @@ end
 
 def add_labouritem
 	@quote = Quote.find(params[:quote_id])
-	@labourItem = Labouritem.new
-	@quote.labouritems << @labourItem
+	# @labourItem = Labouritem.new(params[:labouritem])
+	@labouritem = @quote.labouritems.build(params[:labouritem])
+	# @quote.labouritems << @labourItem
 
-	if @quote.save
+	if @labouritem.save
 		redirect_to @quote, notice: "Added Line Item"
 	else
 		render :show, notice: "Sorry, something went wrong"

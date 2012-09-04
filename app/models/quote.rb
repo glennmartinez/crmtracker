@@ -13,4 +13,7 @@ class Quote < ActiveRecord::Base
   accepts_nested_attributes_for :project
   accepts_nested_attributes_for :contractors
   accepts_nested_attributes_for :labouritems
+
+
+ 
 end

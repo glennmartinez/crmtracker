@@ -1,3 +1,5 @@
+<div>
+
 <p>
   <b>Name:</b>
   <%= @quote.name %>
@@ -8,34 +10,19 @@
   <%= @quote.status %>
 </p>
 
-<b>Existing contractors</b>
-<table>
-	<tbody>
-		<%@quote.contractors.each do | contractor| %>	
-			<tr>
-				<td><%= contractor.firstname %></td>
-				<td><%= contractor.email %> </td>
-			</tr>
-			
-		<% end %>
-	</tbody>
-	
-</table>
-
 <b>Add Labour Items</b>
 <% @quote.labouritems.each do | litems| %>
 	<%= litems.id %>
 	<%= litems.description %>
+	<%= litems.hours %>
 
 <% end %>
 
-<%= form_tag (quote_add_labouritem_path) do %>
-	<%= hidden_field_tag :quote_id, @quote.id %>
-	<%= submit_tag "Add Labour Item" %>
-<% end %>
+
 
 <div> 
 <%= form_tag quote_add_labouritem_path do %>
+	<%= hidden_field_tag :quote_id, @quote.id %>
 	<%= label_tag :description %>
 	<%= text_field_tag :description, "Description of Service" %>
 	<%= label_tag :hours %>
@@ -84,3 +71,5 @@
 
 
 </script>
+
+</div>
