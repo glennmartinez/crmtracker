@@ -6,11 +6,11 @@ class Quote < ActiveRecord::Base
 
   belongs_to :project
 
-
+  has_many :labouritems
   has_many :quoteships
   has_many :contractors, :through => :quoteships
 
   accepts_nested_attributes_for :project
   accepts_nested_attributes_for :contractors
-
+  accepts_nested_attributes_for :labouritems
 end

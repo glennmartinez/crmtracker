@@ -27,6 +27,19 @@ def new
 
 end
 
+
+def add_labouritem
+	@quote = Quote.find(params[:quote_id])
+	@labourItem = Labouritem.new
+	@quote.labouritems << @labourItem
+
+	if @quote.save
+		redirect_to @quote, notice: "Added Line Item"
+	else
+		render :show, notice: "Sorry, something went wrong"
+	end
+end
+
 def add_contractor
 	@quote = Quote.find(params[:quote_id])
 	@contractor = Contractor.find(params[:contractor_id])

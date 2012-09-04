@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   belongs_to :client
   has_many :quotes
   has_many :projectships
+  
   has_many :clients, :through => :labelships
   
 end

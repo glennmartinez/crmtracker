@@ -5,3 +5,24 @@
 <%= @contractor.surname %>
 
 <%= @contractor.email %>
+
+<br>
+<span>
+<b>Active Quotes</b>
+<table>
+	<tbody>
+		<%@contractor.quotes.each do | quotes| %>	
+			<tr>
+				<td><%= link_to quotes.name,  quote_path %></td>
+				<td><%= quotes.status %> </td>
+
+			</tr>
+			
+		<% end %>
+	</tbody>
+	
+</table>
+
+</span>
+
+

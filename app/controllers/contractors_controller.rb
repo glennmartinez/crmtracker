@@ -22,6 +22,8 @@ end
 
 def show
 	@contractor = Contractor.find(params[:id])
+	    # @client = Client.find(params[:client_id])
+
 end
 
 def update

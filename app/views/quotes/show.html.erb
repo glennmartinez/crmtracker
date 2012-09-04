@@ -22,6 +22,17 @@
 	
 </table>
 
+<b>Add Labour Items</b>
+<% @quote.labouritems.each do | litems| %>
+	<%= litems.id %>
+	<%= litems.description %>
+
+<% end %>
+
+<%= form_tag (quote_add_labouritem_path) do %>
+	<%= hidden_field_tag :quote_id, @quote.id %>
+	<%= submit_tag "Add Labour Item" %>
+<% end %>
 
 <b>Other contractors </b>
 <!-- <table>

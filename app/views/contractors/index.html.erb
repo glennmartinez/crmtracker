@@ -1,14 +1,27 @@
 
 
+
+<h1>Listing Contractors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
 <% @contractors.each do |conts| %>
-
-	<%= conts.firstname %>
-	<%= conts.surname %>
-	<%= conts.email %>
-
-
-
+  <tr>
+    <td><%= conts.firstname %></td>
+    <td><%= conts.surname %></td>
+    <td><%= conts.email %></td>
+    <td><%= link_to 'Show', conts %>
+    </tr>
 <% end %>
-<%= collection_select(:post,:firstname, Contractor.find(:all), :id, :firstname) %>
+</table>
 
-<%= link_to "Create Contractor", new_contractor_path %>
+<br />
+
