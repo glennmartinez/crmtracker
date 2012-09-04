@@ -1,4 +1,5 @@
 class QuotesController < ApplicationController
+	
 	before_filter :load_contractors 
 	before_filter :find_project, :only => [:new, :create]
 

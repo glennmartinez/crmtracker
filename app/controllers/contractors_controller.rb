@@ -1,5 +1,5 @@
 class ContractorsController < ApplicationController
-	autocomplete :firstname
+	autocomplete :contractor, :firstname
 
 
 def index

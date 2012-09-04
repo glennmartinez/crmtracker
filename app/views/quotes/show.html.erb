@@ -34,7 +34,7 @@
 	<%= submit_tag "Add Labour Item" %>
 <% end %>
 
-
+<div> 
 <%= form_tag quote_add_labouritem_path do %>
 	<%= label_tag :description %>
 	<%= text_field_tag :description, "Description of Service" %>
@@ -46,7 +46,7 @@
 	<%= text_field_tag :contractor_rate, "Contractor Rate" %>
 	<%= submit_tag "Add" %>
 <% end %>
-
+</div>
 <b>Other contractors </b>
 <!-- <table>
 <% @contractors.each do | contractor | %>
