@@ -1,4 +1,5 @@
 class ContractorsController < ApplicationController
+	autocomplete :firstname
 
 
 def index

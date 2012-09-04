@@ -34,6 +34,19 @@
 	<%= submit_tag "Add Labour Item" %>
 <% end %>
 
+
+<%= form_tag quote_add_labouritem_path do %>
+	<%= label_tag :description %>
+	<%= text_field_tag :description, "Description of Service" %>
+	<%= label_tag :hours %>
+	<%= text_field_tag :hours, "Hours" %>
+	<%= label_tag :contractor_name %>
+	<%= autocomplete_field_tag 'contractor_name', '', autocomplete_contractor_firstname_contractors_path %>
+	<%= label_tag :contractor_rate %>
+	<%= text_field_tag :contractor_rate, "Contractor Rate" %>
+	<%= submit_tag "Add" %>
+<% end %>
+
 <b>Other contractors </b>
 <!-- <table>
 <% @contractors.each do | contractor | %>
@@ -49,6 +62,7 @@
 </tr>
 <% end %>
 </table> -->
+
 <%= form_tag get_contractor_path(@quote), :method => 'get', :id => "contractors_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
