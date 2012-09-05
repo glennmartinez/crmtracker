@@ -1,4 +1,5 @@
 class LabouritemsController < ApplicationController
+	before_filter :find_quote 
 
 
 def index
@@ -6,17 +7,30 @@ def index
 end
 
 def new
+
+	@labouritem = @quote.labouritems.build
+	# @labouritem.contractors.build 
 	
 end
 
 def create
 	@labouritem = @quote.labouritems.build(params[:labouritem])
+	@contractor = Contractor.find(params[:contractor_id])
+	@labouritem.contractors << @contractor
+
 
 	if @labouritem.save
-	
-	
+	format.html { redirect_to @quote, notice: 'Client was successfully created.' }
+	end
+
 	
 end
 
+
+def find_quote
+	@quote = Quote.find(params[:quote_id])
+
+	
+end
 
 end
