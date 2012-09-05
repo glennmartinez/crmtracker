@@ -1,0 +1,20 @@
+
+<div> 
+<%= form_for [@quote, @labouritem] do |f| %>
+  <%= hidden_field :quote_id, @quote.id %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :hours %>
+  <%= f.text_field :hours %>
+
+<%= f.fields_for :contractors do |builder| %>
+  
+    <%= builder.label :contractor_name %>
+    <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path %>
+    <%= builder.label :contractor_rate %>
+    <%= builder.text_field :contractor_rate %>
+<% end %>
+
+  <%= f.submit "Add" %>
+<% end %>
+</div>

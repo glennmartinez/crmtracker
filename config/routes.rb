@@ -12,7 +12,9 @@ Crmtracker::Application.routes.draw do
   end
  
 
-  resources :quotes
+  resources :quotes do
+    resources :labouritems
+  end
 
   post "/quote/add_contractor" => "quotes#add_contractor"
 

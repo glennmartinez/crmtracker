@@ -2,6 +2,7 @@ class QuotesController < ApplicationController
 	
 	before_filter :load_contractors 
 	before_filter :find_project, :only => [:new, :create]
+	before_filter :load_labelitems, :only => :show
 
 
 def index
@@ -76,6 +77,10 @@ end
 
 def show
 	@quote = Quote.find(params[:id])
+	  # @labourship = Labourship.new
+	 @labouritem = @quote.labouritems.build
+
+	# @labourship.contractors.build
 	# @contractors = Contractor.search(params[:search])   
 
 end
@@ -88,5 +93,13 @@ end
 private
 def find_project
 	@project = Project.find(params[:project_id])
+end
+
+private
+def load_labelitems
+	 # @labelitems = Labeitem.all
+	    # @labourship = @quote.labourships.build
+
+	
 end
 end

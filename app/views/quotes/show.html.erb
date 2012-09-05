@@ -18,22 +18,8 @@
 
 <% end %>
 
+<%= render 'labourships' %>
 
-
-<div> 
-<%= form_tag quote_add_labouritem_path do %>
-	<%= hidden_field_tag :quote_id, @quote.id %>
-	<%= label_tag :description %>
-	<%= text_field_tag :description, "Description of Service" %>
-	<%= label_tag :hours %>
-	<%= text_field_tag :hours, "Hours" %>
-	<%= label_tag :contractor_name %>
-	<%= autocomplete_field_tag 'contractor_name', '', autocomplete_contractor_firstname_contractors_path %>
-	<%= label_tag :contractor_rate %>
-	<%= text_field_tag :contractor_rate, "Contractor Rate" %>
-	<%= submit_tag "Add" %>
-<% end %>
-</div>
 <b>Other contractors </b>
 <!-- <table>
 <% @contractors.each do | contractor | %>
