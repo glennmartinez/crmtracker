@@ -79,7 +79,7 @@ def show
 	@quote = Quote.find(params[:id])
 	  # @labourship = Labourship.new
 	 @labouritem = @quote.labouritems.build
-	 # @labouritem.contractors.build 
+	 
 	
 	# @labourship.contractors.build
 	# @contractors = Contractor.search(params[:search])   

@@ -1,6 +1,6 @@
 class LabouritemsController < ApplicationController
 	before_filter :find_quote 
-
+	before_filter :get_contractors
 
 def index
 	@labouritems = Labouritem.all 
@@ -9,7 +9,7 @@ end
 def new
 
 	@labouritem = @quote.labouritems.build
-	# @labouritem.contractors.build 
+	 @labouritem.contractors.build 
 	
 end
 
@@ -29,7 +29,11 @@ end
 
 def find_quote
 	@quote = Quote.find(params[:quote_id])
+	
+end
 
+def get_contractors
+	@contractors = Contractor.all 
 	
 end
 

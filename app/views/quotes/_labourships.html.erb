@@ -1,7 +1,7 @@
 
 <div> 
 <%= form_for [@quote, @labouritem] do |f| %>
-  <%= hidden_field :quote_id, @quote.id %>
+ 
   <%= f.label :description %>
   <%= f.text_field :description %>
   <%= f.label :hours %>
@@ -10,7 +10,8 @@
 <%= f.fields_for :contractors do |builder| %>
   
     <%= builder.label :contractor_name %>
-    <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path %>
+    <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :id_element => '#labouritem_contractors_contractor_id' %>
+     <%= builder.hidden_field :contractor_id  %>
     <%= builder.label :contractor_rate %>
     <%= builder.text_field :contractor_rate %>
 <% end %>
