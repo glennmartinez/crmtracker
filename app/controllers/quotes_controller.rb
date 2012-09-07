@@ -17,7 +17,8 @@ end
 def new
 	# @quote = Quote.new
 	@quote = @project.quotes.build
-	@quote.contractors.build 
+	# @quote.contractors.build 
+	@quote.labouritems.build
 
 	respond_to do |format|
 
@@ -62,8 +63,10 @@ def get_contractor
 end
 
 def create
-	# @quote = Quote.new(params[:quote])
-		@quote = @project.quotes.build(params[:quote])
+	 # @quote = Quote.new(params[:quote])
+	# @quote = @project.quotes.build(params[:quote])
+	@quote = @project.quotes.build(params[:quote])
+    
     respond_to do |format|
       if @quote.save
         format.html { redirect_to @quote, notice: 'Project was successfully created.'  }
@@ -84,6 +87,21 @@ def show
 	# @labourship.contractors.build
 	# @contractors = Contractor.search(params[:search])   
 
+end
+
+def update
+	@quote = Quote.find(params[:id])
+
+	respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'quote was successfully created.' }
+        format.json { render json: @quote, status: :created, location: @quote }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+	
 end
 
 private

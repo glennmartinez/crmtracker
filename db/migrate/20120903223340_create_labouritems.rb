@@ -4,12 +4,14 @@ class CreateLabouritems < ActiveRecord::Migration
       t.string :description
       t.integer :hours
       t.integer :total
+      t.integer :contractor_id
+      t.string  :contractor_name
       t.references :quote
-      t.references :contractor
+      
 
       t.timestamps
     end
     add_index :labouritems, :quote_id
-    add_index :labouritems, :contractor_id
+    
   end
 end

@@ -37,13 +37,13 @@ ActiveRecord::Schema.define(:version => 20120903223340) do
     t.string   "description"
     t.integer  "hours"
     t.integer  "total"
-    t.integer  "quote_id"
     t.integer  "contractor_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "contractor_name"
+    t.integer  "quote_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "labouritems", ["contractor_id"], :name => "index_labouritems_on_contractor_id"
   add_index "labouritems", ["quote_id"], :name => "index_labouritems_on_quote_id"
 
   create_table "projects", :force => true do |t|

@@ -5,20 +5,22 @@
   <%= f.label :status %>
   <%= f.text_field :status %>
    
-<%= f.fields_for :contractors do |builder| %>
-
-  <div class="field">
-    <%= builder.label "Contractor Name" %><br />
-    <%= builder.text_field :firstname %>
-    <%= builder.label "Contractor Surname" %><br />
-    <%= builder.text_field :surname %>
-    <%= builder.label :email %><br />
-    <%= builder.text_field :email %>
-    
-  </div>
-<% end %>
-<%= f.submit %>
-
-<% end %>
-
+<div> 
  
+ <%= f.fields_for :labouritems do |builder| %>
+    <%= builder.label :description %>
+    <%= builder.text_field :description %>
+    <%= builder.label :hours %>
+    <%= builder.text_field :hours %>
+    <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :id_element => '#quote_labouritems_attributes_0_contractor_id' %>
+       <%= builder.hidden_field :contractor_id  %>
+
+  <% end %>
+ 
+ 
+</div>
+
+  <%= f.submit "Add" %>
+
+<% end %>
+
