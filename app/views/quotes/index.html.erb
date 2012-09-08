@@ -1,9 +1,10 @@
-<% @quotes.each do |conts| %>
-
+<% @project.quotes.each do |conts| %>
+<li>
 	<%= conts.name %>
 	<%= conts.status %>
-
+	<%= link_to "Display Quote", [@project, conts] %>
+</li>
 <% end %>
 
-<%= link_to 'New Quote', new_quote_path %>
+<%= link_to 'New Quote', new_project_quote_path %>
 

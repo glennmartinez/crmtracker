@@ -1,5 +1,6 @@
 <%= form_for [@project, @quote] do |f| %>
 <p>
+  <%= f.hidden_field :project_id %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :status %>

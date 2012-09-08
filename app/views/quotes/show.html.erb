@@ -22,6 +22,5 @@
 
 
 
-<%= link_to 'Edit', edit_quote_path(@quote) %> |
-<%= link_to 'Back', quotes_path %>
-<%= link_to 'Create Quote', new_project_quote_path(@quote) %>
+<%= link_to 'Edit', edit_project_quote_path(@project, @quote) %> |
+<%= link_to 'Back to Project', client_project_path(@client, @project) %>

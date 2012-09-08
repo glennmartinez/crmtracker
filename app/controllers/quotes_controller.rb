@@ -1,14 +1,15 @@
 class QuotesController < ApplicationController
 	
 	before_filter :load_contractors 
-	before_filter :find_project, :only => [:new, :create]
+	before_filter :find_project, :only => [:new, :create, :show, :edit]
 	before_filter :load_labelitems, :only => :show
 
 
 def index
 
-	@quotes = Quote.all
-	   @quote = Quote.find(params[:quote_id])
+	 # @quotes = Quote.all
+	  # @quotes = @project.quotes.all 
+	   # @quote = Quote.find(params[:quote_id])
 	 @contractors = Contractor.search(params[:search])   
 
 	
@@ -18,6 +19,7 @@ def new
 	# @quote = Quote.new
 	@quote = @project.quotes.build
 	# @quote.contractors.build 
+	@project
 	@quote.labouritems.build
 
 	respond_to do |format|
@@ -69,7 +71,7 @@ def create
     
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to @quote, notice: 'Project was successfully created.'  }
+        format.html { redirect_to [@project,@quote ], notice: 'Project was successfully created.'  }
         # format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
@@ -81,11 +83,15 @@ end
 def edit
 
 	@quote = Quote.find(params[:id])
+	@project 
 	
 end
 
 def show
 	@quote = Quote.find(params[:id])
+	@project 
+
+	@client = @project.client_id
 	  # @labourship = Labourship.new
 	 # @labouritem = @quote.labouritems.build
 	 
@@ -96,11 +102,12 @@ def show
 end
 
 def update
-	@quote = Quote.find(params[:id])
-
+	  @quote = Quote.find(params[:id])
+	  @project = Project.find(params[:project_id])
+	 	# @quote.update_attributes(params[:note])
 	respond_to do |format|
-      if @quote.save
-        format.html { redirect_to @quote, notice: 'quote was successfully created.' }
+      if @quote.update_attributes(params[:quote])
+        format.html { redirect_to [@project, @quote], notice: 'quote was successfully created.' }
         format.json { render json: @quote, status: :created, location: @quote }
       else
         format.html { render action: "new" }
