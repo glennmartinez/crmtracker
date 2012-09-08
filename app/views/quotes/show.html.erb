@@ -10,17 +10,18 @@
   <%= @quote.status %>
 </p>
 
-<b>Add Labour Items</b>
-<% @quote.labouritems.each do | litems| %>
-	<%= litems.id %>
-	<%= litems.description %>
-	<%= litems.hours %>
-  <%= litems.contractor_name %>
+<% @quote.labouritems.each do |items|%>
 
+	<%= items.description %>
+	<%= items.hours %>
+	<%= items.contractor_name %>
 
 <% end %>
 
-<%= render 'form' %>
-
-
 </div>
+
+
+
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<%= link_to 'Back', quotes_path %>
+<%= link_to 'Create Quote', new_project_quote_path(@quote) %>

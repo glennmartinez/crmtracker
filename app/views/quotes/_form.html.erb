@@ -1,22 +1,25 @@
 <%= form_for [@project, @quote] do |f| %>
-
+<p>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :status %>
   <%= f.text_field :status %>
-   
+ </p>  
 <div> 
- 
+  <h4> Labour Items </h4>
+ <p>
  <%= f.fields_for :labouritems do |builder| %>
+<ul>
     <%= builder.label :description %>
     <%= builder.text_field :description %>
     <%= builder.label :hours %>
     <%= builder.text_field :hours %>
+    <%= builder.label "Contractor" %>
     <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :id_element => '#quote_labouritems_attributes_0_contractor_id' %>
-       <%= builder.hidden_field :contractor_id  %>
-
+    <%= builder.hidden_field :contractor_id  %>
+</ul>
   <% end %>
- 
+ <p>
  
 </div>
 

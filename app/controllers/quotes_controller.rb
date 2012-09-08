@@ -78,10 +78,16 @@ def create
     end
 end
 
+def edit
+
+	@quote = Quote.find(params[:id])
+	
+end
+
 def show
 	@quote = Quote.find(params[:id])
 	  # @labourship = Labourship.new
-	 @labouritem = @quote.labouritems.build
+	 # @labouritem = @quote.labouritems.build
 	 
 	
 	# @labourship.contractors.build
