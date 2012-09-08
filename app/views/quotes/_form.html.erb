@@ -1,4 +1,4 @@
-<%= form_for [@project, @quote] do |f| %>
+<%= nested_form_for [@project, @quote] do |f| %>
 <p>
   <%= f.hidden_field :project_id %>
   <%= f.label :name %>
@@ -18,13 +18,14 @@
     <%= builder.label "Contractor" %>
     <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :id_element => '#quote_labouritems_attributes_0_contractor_id' %>
     <%= builder.hidden_field :contractor_id  %>
+    <%= builder.link_to_remove "Remove" %>
 </ul>
   <% end %>
  <p>
- 
+ <p><%= f.link_to_add "Add Labour Item", :labouritems %></p>
 </div>
 
-  <%= f.submit "Add" %>
+  <%= f.submit "Submit" %>
 
 <% end %>
 

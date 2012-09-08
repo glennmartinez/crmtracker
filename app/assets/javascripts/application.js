@@ -14,4 +14,5 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require autocomplete-rails
+//= require jquery_nested_form
 //= require_tree .

@@ -7,6 +7,7 @@ class CreateLabouritems < ActiveRecord::Migration
       t.integer :contractor_id
       t.string  :contractor_name
       t.references :quote
+      t.integer :contractor_rate
       
 
       t.timestamps
