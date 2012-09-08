@@ -1,5 +1,5 @@
 class ContractorsController < ApplicationController
-	autocomplete :contractor, :firstname, :full => true 
+	autocomplete :contractor, :firstname, :full => true, :extra_data => [:hourly_rate]
 
 
 def index

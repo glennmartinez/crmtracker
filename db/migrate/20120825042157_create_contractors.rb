@@ -5,6 +5,7 @@ class CreateContractors < ActiveRecord::Migration
       t.string :surname
       t.string :email
       t.string :active
+      t.integer :hourly_rate
 
       t.timestamps
     end

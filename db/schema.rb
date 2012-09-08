@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(:version => 20120903223340) do
     t.string   "surname"
     t.string   "email"
     t.string   "active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "hourly_rate"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "labouritems", :force => true do |t|
