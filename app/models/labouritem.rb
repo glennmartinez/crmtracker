@@ -1,5 +1,5 @@
 class Labouritem < ActiveRecord::Base
-  attr_accessible :description, :hours, :total, :contractor_id, :contractor_name
+  attr_accessible :description, :hours, :total, :contractor_id, :contractor_name, :contractor_rate
 
 
   belongs_to :quote

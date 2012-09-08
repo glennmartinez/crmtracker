@@ -14,10 +14,14 @@
     <%= builder.label :description %>
     <%= builder.text_field :description %>
     <%= builder.label :hours %>
-    <%= builder.text_field :hours %>
+    <%= builder.text_field :hours, :size => "4" %>
     <%= builder.label "Contractor" %>
     <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :id_element => '#quote_labouritems_attributes_0_contractor_id' %>
     <%= builder.hidden_field :contractor_id  %>
+    <%= builder.label :contractor_rate  %>
+    <%= builder.text_field :contractor_rate, :size => "4" %>
+    <%= builder.label :total %>
+    <%= builder.text_field :total, :size => "4" %>
     <%= builder.link_to_remove "Remove" %>
 </ul>
   <% end %>
