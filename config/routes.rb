@@ -8,10 +8,13 @@ Crmtracker::Application.routes.draw do
   end
   resources :contractors do
     resources :quotes
+    get :autocomplete_contractor_firstname, :on => :collection
   end
  
 
-  resources :quotes
+  resources :quotes do
+    resources :labouritems
+  end
 
   post "/quote/add_contractor" => "quotes#add_contractor"
 

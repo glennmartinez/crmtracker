@@ -1,7 +1,7 @@
 class Contractor < ActiveRecord::Base
-  attr_accessible :active, :email, :firstname, :surname, :quote_attributes
+  attr_accessible :active, :email, :firstname, :surname, :quote_attributes, :hourly_rate
 
-
+  has_many :labouritems
   has_many :projectships
   has_many :projects, :through => :labelships
 

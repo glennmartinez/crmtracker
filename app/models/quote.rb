@@ -1,5 +1,5 @@
 class Quote < ActiveRecord::Base
-  attr_accessible :name, :status
+  attr_accessible :name, :status, :labourtotal, :materialtotal, :subtotal, :labouritem
   # attr_accessible :contractor
 
   attr_protected :id
@@ -13,4 +13,7 @@ class Quote < ActiveRecord::Base
   accepts_nested_attributes_for :project
   accepts_nested_attributes_for :contractors
   accepts_nested_attributes_for :labouritems
+
+
+ 
 end

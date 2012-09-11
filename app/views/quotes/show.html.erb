@@ -1,3 +1,5 @@
+<div>
+
 <p>
   <b>Name:</b>
   <%= @quote.name %>
@@ -8,65 +10,17 @@
   <%= @quote.status %>
 </p>
 
-<b>Existing contractors</b>
-<table>
-	<tbody>
-		<%@quote.contractors.each do | contractor| %>	
-			<tr>
-				<td><%= contractor.firstname %></td>
-				<td><%= contractor.email %> </td>
-			</tr>
-			
-		<% end %>
-	</tbody>
-	
-</table>
+<% @quote.labouritems.each do |items|%>
 
-<b>Add Labour Items</b>
-<% @quote.labouritems.each do | litems| %>
-	<%= litems.id %>
-	<%= litems.description %>
+	<%= items.description %>
+	<%= items.hours %>
+	<%= items.contractor_name %>
 
 <% end %>
 
-<%= form_tag (quote_add_labouritem_path) do %>
-	<%= hidden_field_tag :quote_id, @quote.id %>
-	<%= submit_tag "Add Labour Item" %>
-<% end %>
-
-<b>Other contractors </b>
-<!-- <table>
-<% @contractors.each do | contractor | %>
-<tr>
-	<td><%= contractor.firstname %></td>
-	<td>
-	<%= form_tag (quote_add_contractor_path) do %>
-		<%= hidden_field_tag :quote_id, @quote.id %>
-		<%= hidden_field_tag :contractor_id, contractor.id %>
-		<%= submit_tag "Add" %>
-	<% end %>
-	</td>
-</tr>
-<% end %>
-</table> -->
-<%= form_tag get_contractor_path(@quote), :method => 'get', :id => "contractors_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-  
-  
-<% end %>
-<div id="contractors"><%= render 'contractors' %></div>
-
-<script type="text/javascript">
-
- $(function() {
-  $("#contractors_search input").keyup(function() {
-    $.get($("#contractors_search").attr("action"), $("#contractors_search").serialize(), null, "script");
-    return false;
-  });
-});
+</div>
 
 
-</script>
+
+<%= link_to 'Edit', edit_project_quote_path(@project, @quote) %> |
+<%= link_to 'Back to Project', client_project_path(@client, @project) %>

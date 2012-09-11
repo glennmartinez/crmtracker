@@ -29,17 +29,21 @@ ActiveRecord::Schema.define(:version => 20120903223340) do
     t.string   "surname"
     t.string   "email"
     t.string   "active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "hourly_rate"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "labouritems", :force => true do |t|
     t.string   "description"
     t.integer  "hours"
     t.integer  "total"
+    t.integer  "contractor_id"
+    t.string   "contractor_name"
     t.integer  "quote_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "contractor_rate"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "labouritems", ["quote_id"], :name => "index_labouritems_on_quote_id"
@@ -66,8 +70,11 @@ ActiveRecord::Schema.define(:version => 20120903223340) do
     t.string   "name"
     t.string   "status"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "labourtotal"
+    t.integer  "materialtotal"
+    t.integer  "subtotal"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "quotes", ["project_id"], :name => "index_quotes_on_project_id"

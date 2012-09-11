@@ -20,7 +20,16 @@
 	<%= link_to @client.firstname, @client  %>
 </p>
 
+<p>
+	<% @project.quotes.each do |quote| %>
+	<li>
+	<%= quote.name %>
+	<%= link_to "Show Quote", project_quote_path(@project, quote.id) %>
+ 	</li>
+	<% end %>
 
+</p>
+
+ 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
 <%= link_to 'Create Quote', new_project_quote_path(@project) %>

@@ -1,0 +1,68 @@
+
+
+This gets an ajax search of contractors:
+
+
+<table>
+<% @contractors.each do | contractor | %>
+<tr>
+	<td><%= contractor.firstname %></td>
+	<td>
+	<%= form_tag quote_add_contractor_path, :method => 'post', :id => "contractors_search" do %>
+		<%= hidden_field_tag :quote_id, @quote.id %>
+		<%= hidden_field_tag :contractor_id, contractor.id %>
+		<%= submit_tag "Add" %>
+	<% end %>
+	</td>
+</tr>
+<% end %>
+</table>  
+
+
+<%= form_tag get_contractor_path(@quote), :method => 'get', :id => "contractors_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  
+  
+<% end %>
+<div id="contractors"><%= render 'contractors' %></div>
+
+<script type="text/javascript">
+
+ $(function() {
+  $("#contractors_search input").keyup(function() {
+    $.get($("#contractors_search").attr("action"), $("#contractors_search").serialize(), null, "script");
+    return false;
+  });
+});
+
+
+</script>
+-----------get_contractors.js.erb.file
+$("#contractors").html("<%= escape_javascript(render :partial => "contractors") %>");
+--------partial
+ <table>
+<% @contractors.each do | contractor | %>
+<tr>
+	<td><%= contractor.firstname %></td>
+	<td>
+	<%= form_tag quote_add_contractor_path, :method => 'post', :id => "contractors_search" do %>
+		<%= hidden_field_tag :quote_id, @quote.id %>
+		<%= hidden_field_tag :contractor_id, contractor.id %>
+		<%= submit_tag "Add" %>
+	<% end %>
+	</td>
+</tr>
+<% end %>
+</table>  
+
+--------routes
+  get "quote/:quote_id/get_contractor" => "quotes#get_contractor", :as => :get_contractor
+
+---------controller
+def get_contractor
+	 @quote = Quote.find(params[:quote_id])
+	@contractors = Contractor.search(params[:search])   
+end
