@@ -4,5 +4,29 @@
 
 
 jQuery ->
-	$('#contractor_name').autocomplete
-	  source: ['foo', 'bar','soap']
+
+	$('#quote_labourtotal').focusout =>
+		labourtotal = document.getElementById('quote_labourtotal').value;
+		changeit = Number(labourtotal)
+		materialtotal = document.getElementById('quote_materialtotal').value;
+
+		isnumber = isNaN(changeit)
+		if isnumber then alert('this is not a number')	else subtotal = Number(labourtotal) + Number(materialtotal)
+		
+	 
+
+
+
+		document.getElementById('quote_subtotal').value= subtotal;
+
+
+	$('#quote_materialtotal').focusout =>
+		labourtotal = document.getElementById('quote_labourtotal').value;
+
+		materialTotal = document.getElementById('quote_materialtotal').value;
+
+
+		subtotal = Number(labourtotal) + Number(materialTotal);
+
+		document.getElementById('quote_subtotal').value= subtotal;
+ 

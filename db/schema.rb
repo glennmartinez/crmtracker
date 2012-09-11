@@ -70,8 +70,11 @@ ActiveRecord::Schema.define(:version => 20120903223340) do
     t.string   "name"
     t.string   "status"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "labourtotal"
+    t.integer  "materialtotal"
+    t.integer  "subtotal"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "quotes", ["project_id"], :name => "index_quotes_on_project_id"

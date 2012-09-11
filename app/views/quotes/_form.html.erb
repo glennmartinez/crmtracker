@@ -28,8 +28,17 @@
  <p>
  <p><%= f.link_to_add "Add Labour Item", :labouritems %></p>
 </div>
+<div>
+    <p><%= f.label :labourtotal %>
+    <%= f.text_field :labourtotal, :size => "6" %></p>
+      <h4> Material Items </h4>
+
+    <p><%= f.label :materialtotal %>
+    <%= f.text_field :materialtotal,:size => "6" %></p>
+    <p><b><%= f.label :subtotal %>
+    <%= f.text_field :subtotal, :size => "6" %></b></p>
+</div>
 
   <%= f.submit "Submit" %>
 
 <% end %>
-

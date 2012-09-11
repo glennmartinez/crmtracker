@@ -1,5 +1,5 @@
 class Quote < ActiveRecord::Base
-  attr_accessible :name, :status, :labouritem
+  attr_accessible :name, :status, :labourtotal, :materialtotal, :subtotal, :labouritem
   # attr_accessible :contractor
 
   attr_protected :id
