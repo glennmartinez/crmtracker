@@ -8,7 +8,62 @@
 </head>
 <body>
 
-<%= yield %>
+
+ <div class="container-fluid">
+   <div class="row-fluid">
+     <div class="span2">
+       <div class="well sidebar-nav sidebar-nav-fixed">
+         <ul class="nav nav-list">
+           <li class="nav-header"></li>
+           <li class="active"><a href="#">
+           	<div style="font-size: 50px"> 
+           		  <i class="icon-off" style="font-size: 50px"></i> 
+	         	</div> 
+	         </a>
+           </li>
+            <li class="active"><a href="/clients">
+           	<div style="font-size: 50px"> 
+           		  <i class="icon-group"></i> 
+	         	</div> 
+	         </a>
+           </li>
+            <li class="active"><a href="/projects">
+           	<div style="font-size: 50px"> 
+           		  <i class="icon-briefcase"></i> 
+	         	</div> 
+           </a>
+           </li>
+          <li class="active"><a href="/contractors">
+            <div style="font-size: 50px"> 
+                <i class="icon-user-md"></i> 
+            </div> 
+           </a>
+           </li>
+
+
+         </ul>
+       </div><!--/.well -->
+     </div><!--/span-->
+     <div class="span10">
+       <div class="hero-unit">
+
+
+       	<%= yield %>
+         
+
+       </div>
+        
+
+  
+ 
+   <hr>
+ 
+   <footer>
+     <p>&copy; Web Solutions 2012</p>
+   </footer>
+ 
+ </div><!--/.fluid-container-->
+​
 
 </body>
 </html>

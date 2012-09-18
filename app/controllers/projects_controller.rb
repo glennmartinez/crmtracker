@@ -1,7 +1,12 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
-  before_filter :find_client
+  before_filter :find_client, :only => [:show,
+                                        :new,
+                                        :edit,
+                                        :update,
+                                        :destroy,
+                                        :create]
   before_filter :find_project, :only => [:show,
                                        :edit,
                                        :update,
@@ -86,7 +91,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to projects }
       format.json { head :no_content }
     end
   end

@@ -1,44 +1,45 @@
-<%= nested_form_for [@project, @quote] do |f| %>
-<p>
+ 
+<%= nested_form_for [@project, @quote], :html => {:class =>'form-inline'} do |f| %>
+<div>
   <%= f.hidden_field :project_id %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :status %>
   <%= f.text_field :status %>
- </p>  
-<div> 
-  <h4> Labour Items </h4>
- <p>
- <%= f.fields_for :labouritems do |builder| %>
-<ul>
+</div>
+  <p>
+    <h4> Labour Items </h4>
+  </p>
+  <p>
+    <%= f.fields_for :labouritems, :html => { :class => 'form-vertical' } do |builder| %>
+ 
     <%= builder.label :description %>
     <%= builder.text_field :description %>
     <%= builder.label :hours %>
-    <%= builder.text_field :hours, :size => "4" %>
+    <%= builder.text_field :hours, :class => "input-mini" %>
     <%= builder.label "Contractor" %>
- <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => '#quote_labouritems_attributes_0_contractor_id', :hourly_rate => '#quote_labouritems_attributes_0_contractor_rate'} %>
+ <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => '#quote_labouritems_attributes_0_contractor_id', :hourly_rate => '#quote_labouritems_attributes_0_contractor_rate'},:class => "input-medium" %>
     <%= builder.hidden_field :contractor_id  %>
     <%= builder.label :contractor_rate  %>
-    <%= builder.text_field :contractor_rate, :size => "4" %>
+    <%= builder.text_field :contractor_rate,:class => "input-mini" %>
     <%= builder.label :total %>
-    <%= builder.text_field :total, :size => "4" %>
-    <%= builder.link_to_remove "Remove" %>
-</ul>
+    <%= builder.text_field :total, :class => "input-mini" %>
+
+     <%= builder.link_to_remove "Delete",:class => 'btn btn-small btn-danger'   %>
+ 
   <% end %>
- <p>
- <p><%= f.link_to_add "Add Labour Item", :labouritems %></p>
-</div>
-<div>
-    <p><%= f.label :labourtotal %>
-    <%= f.text_field :labourtotal, :size => "6" %></p>
+ 
+   <%= f.link_to_add "Add Item", :labouritems, :class => 'btn btn-small btn-primary' %>
+</p>
+     <%= f.label :labourtotal %>
+    <%= f.text_field :labourtotal, :size => "6" %>
       <h4> Material Items </h4>
 
-    <p><%= f.label :materialtotal %>
-    <%= f.text_field :materialtotal,:size => "6" %></p>
-    <p><b><%= f.label :subtotal %>
-    <%= f.text_field :subtotal, :size => "6" %></b></p>
-</div>
-
+    <%= f.label :materialtotal %>
+    <%= f.text_field :materialtotal,:size => "6" %>
+    <b><%= f.label :subtotal %>
+    <%= f.text_field :subtotal, :size => "6" %></b>
+ 
   <%= f.submit "Submit" %>
 
 <% end %>
