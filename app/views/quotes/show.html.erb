@@ -1,26 +1,31 @@
 <div>
-
-<p>
   <b>Name:</b>
   <%= @quote.name %>
-</p>
-
-<p>
   <b>Status:</b>
   <%= @quote.status %>
-</p>
-
-<% @quote.labouritems.each do |items|%>
-
-	<%= items.description %>
-	<%= items.hours %>
-	<%= items.contractor_name %>
-
-<% end %>
-
 </div>
+  <br>
 
+<table class="table table-condensed">
+ <tr>
+	<th>Description</th>
+	<th>Status</th>
+	<th>Contractor</th>
+	<th>Cont Rate</th>
+	<th>Item Total</th>
+ </tr>
+<% @quote.labouritems.each do |items|%>
+ <tr>
+	<td><%= items.description %></td>
+	<td><%= items.hours %></td>
+	<td><%= items.contractor_name %> </td>
+	<td><%= items.contractor_rate %> </td>
+	<td><%= items.total %> </td>
 
-
-<%= link_to 'Edit', edit_project_quote_path(@project, @quote) %> |
+ </tr>
+<% end %>
+</table>
+<%= link_to 'Edit', edit_project_quote_path(@project, @quote) %> 
 <%= link_to 'Back to Project', client_project_path(@client, @project) %>
+
+ 

@@ -1,6 +1,6 @@
-<h1>Listing clients</h1>
+<h3>Listing clients</h3>
 
-<table>
+<table class="table table-condensed">
   <tr>
     <th>Firstname</th>
     <th>Surname</th>
@@ -16,9 +16,9 @@
     <td><%= client.firstname %></td>
     <td><%= client.surname %></td>
     <td><%= client.email %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', client %>
+    <%= link_to 'Edit', edit_client_path(client) %>
+    <%= link_to 'Destroy', client, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -1,4 +1,5 @@
 Crmtracker::Application.routes.draw do
+  
   resources :clients do
     resources :projects
   end
