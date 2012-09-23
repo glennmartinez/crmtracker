@@ -14,6 +14,8 @@ gem 'nested_form'
 gem 'simple_form'
 gem "jquery-ui-rails", "~> 2.0.0"
 gem 'rails3-jquery-autocomplete'
+gem 'prawn'
+gem 'prawnto'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
