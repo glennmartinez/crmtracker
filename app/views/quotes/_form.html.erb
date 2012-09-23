@@ -14,16 +14,27 @@
     <%= f.fields_for :labouritems, :html => { :class => 'form-vertical' } do |builder| %>
  
     <%= builder.label :description %>
-    <%= builder.text_field :description %>
+    <%= builder.text_field :description, :class => "input-medium" %>
     <%= builder.label :hours %>
     <%= builder.text_field :hours, :class => "input-mini" %>
-    <%= builder.label "Contractor" %>
- <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => '#quote_labouritems_attributes_0_contractor_id', :hourly_rate => '#quote_labouritems_attributes_0_contractor_rate'},:class => "input-medium" %>
-    <%= builder.hidden_field :contractor_id  %>
-    <%= builder.label :contractor_rate  %>
-    <%= builder.text_field :contractor_rate,:class => "input-mini" %>
     <%= builder.label :total %>
     <%= builder.text_field :total, :class => "input-mini" %>
+    <%= builder.label "Mup/Hr" %>
+    <%= builder.text_field :muphourrate, :class => "input-mini" %>
+      <%= builder.label "Mup/Total" %>
+    <%= builder.text_field :muptotal, :class => "input-mini" %>
+    <%= builder.label "Mup/%" %>
+    <%= builder.text_field :muppercent, :class => "input-mini" %>
+    <%= builder.label "Contractor" %>
+    <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => '#quote_labouritems_attributes_0_contractor_id', :hourly_rate => '#quote_labouritems_attributes_0_contractor_rate'},:class => "input-small",:placeholder => "Seach" %>
+    <%= builder.hidden_field :contractor_id  %>
+    <%= builder.label "Rate/hr"  %>
+    <%= builder.text_field :contractor_rate,:class => "input-mini" %>
+    <%= builder.label "Work %" %>
+    <%= builder.text_field :progress_percent, :class => "input-mini" %>
+    <%= builder.label "Work $" %>
+    <%= builder.text_field :progress_payment, :class => "input-mini" %>
+
 
      <%= builder.link_to_remove "Delete",:class => 'btn btn-small btn-danger'   %>
  
@@ -32,13 +43,13 @@
    <%= f.link_to_add "Add Item", :labouritems, :class => 'btn btn-small btn-primary' %>
 </p>
      <%= f.label :labourtotal %>
-    <%= f.text_field :labourtotal, :size => "6" %>
+    <%= f.text_field :labourtotal, :class => "input-mini" %>
       <h4> Material Items </h4>
 
     <%= f.label :materialtotal %>
-    <%= f.text_field :materialtotal,:size => "6" %>
-    <b><%= f.label :subtotal %>
-    <%= f.text_field :subtotal, :size => "6" %></b>
+    <%= f.text_field :materialtotal,:class => "input-mini" %>
+    <b><%= f.label :subtotal %></b>
+    <%= f.text_field :subtotal, :class => "input-mini"  %>
  
   <%= f.submit "Submit" %>
  <% end %>

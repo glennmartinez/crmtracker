@@ -42,8 +42,13 @@ ActiveRecord::Schema.define(:version => 20120903223340) do
     t.string   "contractor_name"
     t.integer  "quote_id"
     t.integer  "contractor_rate"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "muppercent"
+    t.integer  "muphourrate"
+    t.integer  "muptotal"
+    t.integer  "progress_percent"
+    t.integer  "progress_payment"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "labouritems", ["quote_id"], :name => "index_labouritems_on_quote_id"

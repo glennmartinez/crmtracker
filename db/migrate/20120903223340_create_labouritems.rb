@@ -8,6 +8,12 @@ class CreateLabouritems < ActiveRecord::Migration
       t.string  :contractor_name
       t.references :quote
       t.integer :contractor_rate
+      t.integer :muppercent
+      t.integer :muphourrate
+      t.integer :muptotal
+      t.integer :progress_percent
+      t.integer :progress_payment
+
       
 
       t.timestamps

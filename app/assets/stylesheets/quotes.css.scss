@@ -5,7 +5,7 @@
 .sidebar-nav-fixed {
     position:fixed;
     top:60px;
-    width:6.97%;
+    width:3.97%;
 }
 
 @media (max-width: 767px) {
@@ -32,13 +32,15 @@
   color: #333;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   background-color: whiteSmoke;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 
   .row-fluid .span2 {
-    width: 11.529915%;
+    width: 8.529915%;
     *width: 14.4767230406383%;
-  }
+   }
 
   .formie {
 
@@ -46,3 +48,14 @@
   padding-bottom: 20px;
 
   }
+
+
+.hero-unit {
+  
+  padding: 30px;
+}
+
+.input-mini {
+  width: 30px;
+}
+ 
