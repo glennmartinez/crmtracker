@@ -26,7 +26,9 @@
     <%= builder.label "Mup/%" %>
     <%= builder.text_field :muppercent, :class => "input-mini" %>
     <%= builder.label "Contractor" %>
-    <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => '#quote_labouritems_attributes_0_contractor_id', :hourly_rate => '#quote_labouritems_attributes_0_contractor_rate'},:class => "input-small",:placeholder => "Seach" %>
+    
+<%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => "##{form_tag_id(builder.object_name, :contractor_id)}" , :hourly_rate => "##{form_tag_id(builder.object_name, :contractor_rate)}"   },:class => "input-small",:placeholder => "Seach" %>
+    
     <%= builder.hidden_field :contractor_id  %>
     <%= builder.label "Rate/hr"  %>
     <%= builder.text_field :contractor_rate,:class => "input-mini" %>
@@ -34,7 +36,6 @@
     <%= builder.text_field :progress_percent, :class => "input-mini" %>
     <%= builder.label "Work $" %>
     <%= builder.text_field :progress_payment, :class => "input-mini" %>
-
 
      <%= builder.link_to_remove "Delete",:class => 'btn btn-small btn-danger'   %>
  
@@ -53,3 +54,4 @@
  
   <%= f.submit "Submit" %>
  <% end %>
+ 
