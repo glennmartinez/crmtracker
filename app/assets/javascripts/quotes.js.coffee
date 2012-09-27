@@ -25,8 +25,24 @@ jQuery ->
 
 		materialTotal = document.getElementById('quote_materialtotal').value;
 
-
 		subtotal = Number(labourtotal) + Number(materialTotal);
 
-		document.getElementById('quote_subtotal').value= subtotal;
+		document.getElementById('quote_subtotal').value = subtotal;
  
+
+
+jQuery ->
+ 
+ 	$('#quote_labouritems_attributes_0_hours').focusout =>
+	 	labourhours = document.getElementById('quote_labouritems_attributes_0_hours').value;
+	 	
+	 	contractor_rate = document.getElementById('quote_labouritems_attributes_0_contractor_rate').value;
+
+	 	itemtotal = Number(labourhours) * Number(contractor_rate);
+
+	 	document.getElementById('quote_labouritems_attributes_0_total').value = itemtotal;
+
+
+
+
+
