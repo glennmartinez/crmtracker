@@ -17,6 +17,7 @@ def create
 	@labouritem = @quote.labouritems.build(params[:labouritem])
 	@contractor = Contractor.find(params[:contractor_id])
 	@labouritem.contractors << @contractor
+	@contractor.labouritems << @labouritem
 
 
 	if @labouritem.save
