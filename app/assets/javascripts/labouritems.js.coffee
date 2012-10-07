@@ -43,4 +43,4 @@ jQuery ->
 	 	document.getElementById('quote_labouritems_attributes_0_total').value = itemtotal;
 	 	document.getElementById('quote_labouritems_attributes_0_muphourrate').value = markuphour;
 
-
+ 

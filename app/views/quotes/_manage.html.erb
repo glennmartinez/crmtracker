@@ -1,0 +1,43 @@
+ 
+<%= nested_form_for [@project, @quote], :html => {:class =>'form-inline'} do |f| %>
+<div>
+  <%= f.hidden_field :project_id %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :status %>
+  <%= f.text_field :status %>
+</div>
+  <p>
+    <h4> Labour Items </h4>
+  </p>
+  <p>
+    <%= f.fields_for :labouritems, :html => { :class => 'form-vertical' } do |builder| %>
+ 
+    <%= builder.label :description %>
+    <%= builder.text_field :description, :class => "input-medium" %>
+    <%= builder.label :hours %>
+    <%= builder.text_field :hours, :class => "input-mini" %>
+    <%= builder.text_field :contractor_name, :readonly => true, :class => "input-small"  %>
+
+    <%= builder.label "Start Date" %>
+    <%= builder.datepicker :start_date,:dateFormat => "yy-mm-dd", :class => "input-small" %>
+     <%= builder.label "End Date" %>
+    <%= builder.datepicker :end_date,:dateFormat => "yy-mm-dd", :class => "input-small" %>
+    <%= builder.label "Total Days" %>
+    <%= builder.text_field :total_days, :class => "input-mini" %>
+    <%= builder.label "Days Completed" %>
+    <%= builder.text_field :days_completed, :class => "input-mini" %>
+    <%= builder.label "Remaining" %>
+    <%= builder.text_field :days_remaining, :class => "input-mini" %>
+    <%= builder.label "Progress %" %>
+    <%= builder.text_field :progress_percent, :class => "input-mini" %>
+   
+ 
+  <% end %>
+ 
+</p>
+     
+ 
+  <%= f.submit "Update" %>
+ <% end %>
+ 

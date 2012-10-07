@@ -1,8 +1,8 @@
 class QuotesController < ApplicationController
 	
 	before_filter :load_contractors 
-	before_filter :find_project, :only => [:new, :create, :show, :edit]
-	before_filter :load_labelitems, :only => :show
+	before_filter :find_project, :only => [:new, :create, :show, :edit, :progress_manage]
+	before_filter :load_labelitems, :only => [:show, :progress_manage]
 
 
 def index
@@ -33,31 +33,31 @@ def new
 end
 
 
-def add_labouritem
-	@quote = Quote.find(params[:quote_id])
-	# @labourItem = Labouritem.new(params[:labouritem])
-	@labouritem = @quote.labouritems.build(params[:labouritem])
-	# @quote.labouritems << @labourItem
+# def add_labouritem
+# 	@quote = Quote.find(params[:quote_id])
+# 	# @labourItem = Labouritem.new(params[:labouritem])
+# 	@labouritem = @quote.labouritems.build(params[:labouritem])
+# 	# @quote.labouritems << @labourItem
 
-	if @labouritem.save
-		redirect_to @quote, notice: "Added Line Item"
-	else
-		render :show, notice: "Sorry, something went wrong"
-	end
-end
+# 	if @labouritem.save
+# 		redirect_to @quote, notice: "Added Line Item"
+# 	else
+# 		render :show, notice: "Sorry, something went wrong"
+# 	end
+# end
 
-def add_contractor
-	@quote = Quote.find(params[:quote_id])
-	@contractor = Contractor.find(params[:contractor_id])
-	@quote.contractors << @contractor
+# def add_contractor
+# 	@quote = Quote.find(params[:quote_id])
+# 	@contractor = Contractor.find(params[:contractor_id])
+# 	@quote.contractors << @contractor
 
-	if @quote.save
-		redirect_to @quote, notice: "contractor was added"
-	else
-		render :show, notice: "Sorry, something went aweful"
-	end
+# 	if @quote.save
+# 		redirect_to @quote, notice: "contractor was added"
+# 	else
+# 		render :show, notice: "Sorry, something went aweful"
+# 	end
 
-end
+# end
 
 def get_contractor
 	 @quote = Quote.find(params[:quote_id])
@@ -114,6 +114,13 @@ def update
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
+	
+end
+
+def progress_manage
+	@quote = Quote.find(params[:quote_id])
+	@project 
+
 	
 end
 

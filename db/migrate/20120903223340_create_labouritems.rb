@@ -13,6 +13,11 @@ class CreateLabouritems < ActiveRecord::Migration
       t.integer :muptotal
       t.integer :progress_percent
       t.integer :progress_payment
+      t.integer :total_days
+      t.integer :days_completed
+      t.integer :days_remaining
+      t.date :start_date
+      t.date :end_date
 
       
 

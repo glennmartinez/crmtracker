@@ -28,7 +28,6 @@
     <%= builder.label "Contractor" %>
     
 <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => "##{form_tag_id(builder.object_name, :contractor_id)}" , :hourly_rate => "##{form_tag_id(builder.object_name, :contractor_rate)}"   },:class => "input-small",:placeholder => "Seach" %>
-    
     <%= builder.hidden_field :contractor_id  %>
     <%= builder.label "Rate/hr"  %>
     <%= builder.text_field :contractor_rate,:class => "input-mini" %>
