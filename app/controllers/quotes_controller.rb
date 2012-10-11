@@ -118,6 +118,16 @@ def update
 	
 end
 
+def destroy
+    @quote = Quote.find(params[:id])
+    @quote.destroy
+
+    respond_to do |format|
+      format.html { redirect_to quotes }
+      format.json { head :no_content }
+    end
+  end
+
 def progress_manage
 	@quote = Quote.find(params[:quote_id])
 	@project 

@@ -53,14 +53,15 @@
   <%= maker.text_field :material_total %>
   <%= maker.label :quantity %>
   <%= maker.text_field :quantity %>
-  <%= f.link_to_remove "Delete",:class => 'btn btn-small btn-danger'%>
+  <%= maker.link_to_remove "Delete",:class => 'btn btn-small btn-danger'%>
 <% end %>
+  <%= f.link_to_add "Add Item", :materialitems, :class => 'btn btn-small btn-primary' %>
 
     <%= f.label :materialtotal %>
     <%= f.text_field :materialtotal,:class => "input-mini" %>
     <b><%= f.label :subtotal %></b>
     <%= f.text_field :subtotal, :class => "input-mini"  %>
-    <%= f.link_to_add "Add Item", :materialitems, :class => 'btn btn-small btn-primary' %>
+   
 
  
   <%= f.submit "Submit" %>
