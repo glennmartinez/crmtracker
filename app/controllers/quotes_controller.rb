@@ -21,6 +21,7 @@ def new
 	# @quote.contractors.build 
 	@project
 	@quote.labouritems.build
+	@quote.materialitems.build
 
 	respond_to do |format|
 

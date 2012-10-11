@@ -27,7 +27,7 @@
     <%= builder.text_field :muppercent, :class => "input-mini" %>
     <%= builder.label "Contractor" %>
     
-<%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => "##{form_tag_id(builder.object_name, :contractor_id)}" , :hourly_rate => "##{form_tag_id(builder.object_name, :contractor_rate)}"   },:class => "input-small",:placeholder => "Seach" %>
+    <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => "##{form_tag_id(builder.object_name, :contractor_id)}" , :hourly_rate => "##{form_tag_id(builder.object_name, :contractor_rate)}"   },:class => "input-small",:placeholder => "Seach" %>
     <%= builder.hidden_field :contractor_id  %>
     <%= builder.label "Rate/hr"  %>
     <%= builder.text_field :contractor_rate,:class => "input-mini" %>
@@ -36,20 +36,32 @@
     <%= builder.label "Work $" %>
     <%= builder.text_field :progress_payment, :class => "input-mini" %>
 
-     <%= builder.link_to_remove "Delete",:class => 'btn btn-small btn-danger'   %>
+    <%= builder.link_to_remove "Delete",:class => 'btn btn-small btn-danger'   %>
  
   <% end %>
  
-   <%= f.link_to_add "Add Item", :labouritems, :class => 'btn btn-small btn-primary' %>
+  <%= f.link_to_add "Add Item", :labouritems, :class => 'btn btn-small btn-primary' %>
 </p>
-     <%= f.label :labourtotal %>
-    <%= f.text_field :labourtotal, :class => "input-mini" %>
+  <%= f.label :labourtotal %>
+  <%= f.text_field :labourtotal, :class => "input-mini" %>
       <h4> Material Items </h4>
+
+<%= f.fields_for :materialitems do |maker| %>
+  <%= maker.label :name %>
+  <%= maker.text_field :name %>
+  <%= maker.label :material_total %>
+  <%= maker.text_field :material_total %>
+  <%= maker.label :quantity %>
+  <%= maker.text_field :quantity %>
+  <%= f.link_to_remove "Delete",:class => 'btn btn-small btn-danger'%>
+<% end %>
 
     <%= f.label :materialtotal %>
     <%= f.text_field :materialtotal,:class => "input-mini" %>
     <b><%= f.label :subtotal %></b>
     <%= f.text_field :subtotal, :class => "input-mini"  %>
+    <%= f.link_to_add "Add Item", :materialitems, :class => 'btn btn-small btn-primary' %>
+
  
   <%= f.submit "Submit" %>
  <% end %>
