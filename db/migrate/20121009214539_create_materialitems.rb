@@ -5,11 +5,14 @@ class CreateMaterialitems < ActiveRecord::Migration
       t.integer :quantity
       t.integer :material_total
       t.references :quote
-      t.integer :supplier_id
+      t.references :supplier
+ 
+
 
       t.timestamps
     end
         add_index :materialitems, :quote_id
+        add_index :materialitems, :supplier_id
 
   end
 end

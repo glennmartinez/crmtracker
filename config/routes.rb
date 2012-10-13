@@ -12,6 +12,10 @@ Crmtracker::Application.routes.draw do
     get :autocomplete_contractor_firstname, :on => :collection
   end
  
+  resources :suppliers do
+    resources :quotes
+    get :autocomplete_supplier_name, :on => :collection 
+  end
 
   resources :quotes do
     resources :labouritems

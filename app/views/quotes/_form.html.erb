@@ -53,7 +53,11 @@
   <%= maker.text_field :material_total %>
   <%= maker.label :quantity %>
   <%= maker.text_field :quantity %>
+  <%= maker.label :supllier_name %>
+  <%= maker.autocomplete_field :supplier_name, autocomplete_supplier_name_suppliers_path, :update_elements => {:id => "##{form_tag_id(maker.object_name, :supplier_id)}" },:class => "input-small",:placeholder => "Search" %>
   <%= maker.link_to_remove "Delete",:class => 'btn btn-small btn-danger'%>
+
+  <%= maker.hidden_field :supplier_id  %>
 <% end %>
   <%= f.link_to_add "Add Item", :materialitems, :class => 'btn btn-small btn-primary' %>
 
