@@ -11,33 +11,34 @@
     <h4> Labour Items </h4>
   </p>
   <p>
+
     <%= f.fields_for :labouritems, :html => { :class => 'form-vertical' } do |builder| %>
- 
+ <div class="labouritems">
     <%= builder.label :description %>
     <%= builder.text_field :description, :class => "input-medium" %>
     <%= builder.label :hours %>
-    <%= builder.text_field :hours, :class => "input-mini" %>
+    <%= builder.text_field :hours, :class => "input-mini hours" %>
     <%= builder.label :total %>
-    <%= builder.text_field :total, :class => "input-mini" %>
+    <%= builder.text_field :total,:readonly => true, :class => "input-mini total" %>
     <%= builder.label "Mup/Hr" %>
-    <%= builder.text_field :muphourrate, :class => "input-mini" %>
+    <%= builder.text_field :muphourrate, :class => "input-mini muphrate", :readonly => true %>
       <%= builder.label "Mup/Total" %>
-    <%= builder.text_field :muptotal, :class => "input-mini" %>
+    <%= builder.text_field :muptotal, :class => "input-mini muptotal",:readonly => true %>
     <%= builder.label "Mup/%" %>
-    <%= builder.text_field :muppercent, :class => "input-mini" %>
+    <%= builder.text_field :muppercent, :class => "input-mini mupercent" %>
     <%= builder.label "Contractor" %>
     
     <%= builder.autocomplete_field :contractor_name, autocomplete_contractor_firstname_contractors_path, :update_elements => {:id => "##{form_tag_id(builder.object_name, :contractor_id)}" , :hourly_rate => "##{form_tag_id(builder.object_name, :contractor_rate)}"   },:class => "input-small",:placeholder => "Seach" %>
     <%= builder.hidden_field :contractor_id  %>
     <%= builder.label "Rate/hr"  %>
-    <%= builder.text_field :contractor_rate,:class => "input-mini" %>
+    <%= builder.text_field :contractor_rate,:class => "input-mini rate" %>
     <%= builder.label "Work %" %>
     <%= builder.text_field :progress_percent, :class => "input-mini" %>
     <%= builder.label "Work $" %>
     <%= builder.text_field :progress_payment, :class => "input-mini" %>
 
     <%= builder.link_to_remove "Delete",:class => 'btn btn-small btn-danger'   %>
- 
+</div> 
   <% end %>
  
   <%= f.link_to_add "Add Item", :labouritems, :class => 'btn btn-small btn-primary' %>
@@ -47,6 +48,8 @@
       <h4> Material Items </h4>
 
 <%= f.fields_for :materialitems do |maker| %>
+
+  
   <%= maker.label :name %>
   <%= maker.text_field :name %>
   <%= maker.label :material_total %>
@@ -70,4 +73,55 @@
  
   <%= f.submit "Submit" %>
  <% end %>
+
+ <script type="text/javascript">
+
+ var LabourItems = {
+   rate: null,
+   hours: null,
+   total: null,
+   mupercent: null,
+   muptotal: null,
+   muphrate: null,
+   subtotal: null,
+  
+   init: function(object) {
+      this.rate = parseInt($(object).children('.rate').first().val(), 10);
+      // var rate = $(object).children('.rate').first();
+      this.hours =parseInt($(object).children('.hours').first().val(), 10);
+      this.mupercent =parseInt($(object).children('.mupercent').first().val(), 10);
+      if(isNaN(this.mupercent))
+      {
+        this.mupercent = 0;
+      }
+
+      this.total = this.rate * this.hours;
+      this.muptotal = (this.mupercent / 100) * this.total;
+      this.muphrate = this.muptotal / this.hours;
+      this.subtotal = this.total + this.muptotal;
+      this.updateTotal(object);
+      this.markupTotal(object);
+      this.markuphourRate(object);
+   },
+   updateTotal: function(object) {
+      $(object).children('.total').first().val(this.subtotal || 0);
+   },
+   markupTotal: function(object) {
+      $(object).children('.muptotal').first().val(this.muptotal || 0);
+   },
+   markuphourRate: function(object) {
+      $(object).children('.muphrate').first().val(this.muphrate || 0);
+   }
+}
+
+//reactTochange for those inputs that you want to observe
+$('.labouritems input').live("keyup", function() {
+   $('.labouritems').each( function(key,value){
+      LabourItems.init(this);
+   });
+});
+
+
+
+ </script>
  

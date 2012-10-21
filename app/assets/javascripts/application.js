@@ -16,4 +16,5 @@
 //= require twitter/bootstrap
 //= require autocomplete-rails
 //= require jquery_nested_form
+//= require labouritems2.js
 //= require_tree .

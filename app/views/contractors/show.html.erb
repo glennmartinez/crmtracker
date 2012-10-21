@@ -1,28 +1,41 @@
 
-
-<%= @contractor.firstname %>
-
-<%= @contractor.surname %>
-
-<%= @contractor.email %>
-
-<br>
-<span>
-<b>Active Quotes</b>
-<table>
-	<tbody>
-		<%@contractor.quotes.each do | quotes| %>	
-			<tr>
-				<td><%= link_to quotes.name,  quote_path %></td>
-				<td><%= quotes.status %> </td>
-
-			</tr>
+<h3>Contractor Details</h3>
+<div>
+<table class="table table-condensed">
+	<tr>
+		<th>Contractor Firstname</th>
+		<th>Contractor Surname</th>
+		<th>Email</th>
+	</tr>
 			
-		<% end %>
-	</tbody>
-	
+	<tr>
+		<td><%= @contractor.firstname %></td>
+		<td><%= @contractor.surname %> </td>
+		<td><%= @contractor.email %> </td>
+	</tr>
+				
 </table>
 
-</span>
+</div>
+<br>
+<span>
+<h3>Active Jobs</h3>
+<table class="table table-condensed">
+	<tr>
+		<th>Description</th>
+		<th>Hours</th>
+		<th>Percentage Completed</th>
+		<th>Quote Id</th>
 
-
+	</tr>
+		<%@contractor.labouritems.each do | item| %>	
+	<tr>
+		<td><%= link_to item.description %></td>
+		<td><%= item.hours %> </td>
+		<td><%= item.progress_percent %> </td>
+		<td><%= item.quote_id %> </td>
+	</tr>
+			
+		<% end %>
+ 	
+</table>
