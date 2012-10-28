@@ -53,12 +53,12 @@
   
   <%= maker.label :name %>
   <%= maker.text_field :name, :class => "input-medium" %>
-  <%= maker.label :material_total %>
-  <%= maker.text_field :material_total, :class => "input-medium" %>
   <%= maker.label :quantity %>
-  <%= maker.text_field :quantity, :class => "input-small" %>
+  <%= maker.text_field :quantity, :class => "input-small maquantity" %>
   <%= maker.label :unitprice %>
-  <%= maker.text_field :unitprice, :class => "input-small" %>
+  <%= maker.text_field :unitprice, :class => "input-small maunit" %>
+  <%= maker.label :material_total %>
+  <%= maker.text_field :material_total, :readonly => true, :class => "input-medium matotal" %>
   <%= maker.label :supplier_name %>
   <%= maker.autocomplete_field :supplier_name, autocomplete_supplier_name_suppliers_path, :update_elements => {:id => "##{form_tag_id(maker.object_name, :supplier_id)}" },:class => "input-medium",:placeholder => "Search" %>
   <%= maker.link_to_remove raw('<i class="icon-trash"></i>'),:class => 'btn btn-small btn-danger'%>
@@ -138,49 +138,30 @@ $('.labouritems input').live("keyup", function() {
 
 
  var MaterialItems = {
-   quantity: null,
-   materialprice: null,
-   total: null,
+   matotal: null,
+   maquantity: null,
+   maunit: null,
  
   
    init: function(object) {
-      this.rate = parseInt($(object).children('.rate').first().val(), 10);
       // var rate = $(object).children('.rate').first();
-      this.hours =parseInt($(object).children('.hours').first().val(), 10);
-      this.mupercent =parseInt($(object).children('.mupercent').first().val(), 10);
-      this.progresspercent = parseInt($(object).children('.progresspercent').first().val(), 10);
-      if(isNaN(this.mupercent))
-      {
-        this.mupercent = 0;
-      }
+      this.maquantity =parseInt($(object).children('.maquantity').first().val(), 10);
+      this.maunit =parseInt($(object).children('.maunit').first().val(), 10);
 
-      this.total = this.rate * this.hours;
-      this.muptotal = (this.mupercent / 100) * this.total;
-      this.muphrate = this.muptotal / this.hours;
-      this.subtotal = this.total + this.muptotal;
+      this.matotal = this.maquantity * this.maunit;
+     
       this.updateTotal(object);
-      this.markupTotal(object);
-      this.markuphourRate(object);
-      this.progresstotal = (this.progresspercent / 100) * this.subtotal;
-      this.progressTotal(object);
    },
    updateTotal: function(object) {
-      $(object).children('.total').first().val(this.subtotal || 0);
-   },
-   markupTotal: function(object) {
-      $(object).children('.muptotal').first().val(this.muptotal || 0);
-   },
-   markuphourRate: function(object) {
-      $(object).children('.muphrate').first().val(this.muphrate || 0);
-   },
-   progressTotal: function(object) {
-      $(object).children('.progresstotal').first().val(this.progresstotal || 0);
+      $(object).children('.matotal').first().val(this.matotal || 0);
+   
    }
+   
 }
 
 //reactTochange for those inputs that you want to observe
 $('.materialitems input').live("keyup", function() {
-   $('.MaterialItems').each( function(key,value){
+   $('.materialitems').each( function(key,value){
       MaterialItems.init(this);
    });
 });
