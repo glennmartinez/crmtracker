@@ -25,8 +25,11 @@
  </tr>
 <% end %>
 </table>
-<%= link_to 'Edit', edit_project_quote_path(@project, @quote) %> 
- <%= link_to 'Manage', progress_manage_path(@project, @quote) %>
-<%= link_to 'Back to Project', client_project_path(@client, @project) %>
-
+<br><br>
+<div>
+<%= link_to raw('<i class="icon-cog" style="font-size: 25px"></i>' "  Admin"), edit_project_quote_path(@project, @quote)   %> 
+ <%= link_to raw('<i class="icon-time"style="font-size: 25px"></i>' "  Manage"), progress_manage_path(@project, @quote) %>
+<%= link_to raw('<i class="icon-hand-left" style="font-size: 25px"></i>' "  Back to Project"), client_project_path(@client, @project)  %>
+</div>
  
+

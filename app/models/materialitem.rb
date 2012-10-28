@@ -1,5 +1,5 @@
 class Materialitem < ActiveRecord::Base
-  attr_accessible :material_total, :name, :quantity, :supplier_id
+  attr_accessible :material_total, :name, :quantity, :unitprice, :supplier_id
 
   belongs_to :quote 
   belongs_to :supplier

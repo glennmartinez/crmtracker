@@ -7,8 +7,9 @@
   <%= f.label :status %>
   <%= f.text_field :status %>
 </div>
+<br><br>
   <p>
-    <h4> Labour Items </h4>
+    <h3> Labour Items </h3>
   </p>
   <p>
 
@@ -19,11 +20,11 @@
     <%= builder.label :hours %>
     <%= builder.text_field :hours, :class => "input-mini hours" %>
     <%= builder.label :total %>
-    <%= builder.text_field :total,:readonly => true, :class => "input-mini total" %>
+    <%= builder.text_field :total,:readonly => true, :class => "input-small total" %>
     <%= builder.label "Mup/Hr" %>
     <%= builder.text_field :muphourrate, :class => "input-mini muphrate", :readonly => true %>
       <%= builder.label "Mup/Total" %>
-    <%= builder.text_field :muptotal, :class => "input-mini muptotal",:readonly => true %>
+    <%= builder.text_field :muptotal, :class => "input-small muptotal",:readonly => true %>
     <%= builder.label "Mup/%" %>
     <%= builder.text_field :muppercent, :class => "input-mini mupercent" %>
     <%= builder.label "Contractor" %>
@@ -33,45 +34,50 @@
     <%= builder.label "Rate/hr"  %>
     <%= builder.text_field :contractor_rate,:class => "input-mini rate" %>
     <%= builder.label "Work %" %>
-    <%= builder.text_field :progress_percent, :class => "input-mini" %>
+    <%= builder.text_field :progress_percent, :class => "input-mini progresspercent" %>
     <%= builder.label "Work $" %>
-    <%= builder.text_field :progress_payment, :class => "input-mini" %>
+    <%= builder.text_field :progress_payment, :class => "input-small progresstotal" %>
 
-    <%= builder.link_to_remove "Delete",:class => 'btn btn-small btn-danger'   %>
+    <%= builder.link_to_remove raw('<i class="icon-trash"></i>'),:class => 'btn btn-small btn-danger'   %>
 </div> 
   <% end %>
  
-  <%= f.link_to_add "Add Item", :labouritems, :class => 'btn btn-small btn-primary' %>
+  <%= f.link_to_add raw('<i class="icon-plus-sign"></i>'), :labouritems, :class => 'btn btn-small btn-primary' %>
 </p>
-  <%= f.label :labourtotal %>
-  <%= f.text_field :labourtotal, :class => "input-mini" %>
-      <h4> Material Items </h4>
+<br>
+ 
+      <h3> Material Items </h3>
 
 <%= f.fields_for :materialitems do |maker| %>
-
+  <div class="materialitems">
   
   <%= maker.label :name %>
-  <%= maker.text_field :name %>
+  <%= maker.text_field :name, :class => "input-medium" %>
   <%= maker.label :material_total %>
-  <%= maker.text_field :material_total %>
+  <%= maker.text_field :material_total, :class => "input-medium" %>
   <%= maker.label :quantity %>
-  <%= maker.text_field :quantity %>
-  <%= maker.label :supllier_name %>
-  <%= maker.autocomplete_field :supplier_name, autocomplete_supplier_name_suppliers_path, :update_elements => {:id => "##{form_tag_id(maker.object_name, :supplier_id)}" },:class => "input-small",:placeholder => "Search" %>
-  <%= maker.link_to_remove "Delete",:class => 'btn btn-small btn-danger'%>
+  <%= maker.text_field :quantity, :class => "input-small" %>
+  <%= maker.label :unitprice %>
+  <%= maker.text_field :unitprice, :class => "input-small" %>
+  <%= maker.label :supplier_name %>
+  <%= maker.autocomplete_field :supplier_name, autocomplete_supplier_name_suppliers_path, :update_elements => {:id => "##{form_tag_id(maker.object_name, :supplier_id)}" },:class => "input-medium",:placeholder => "Search" %>
+  <%= maker.link_to_remove raw('<i class="icon-trash"></i>'),:class => 'btn btn-small btn-danger'%>
 
   <%= maker.hidden_field :supplier_id  %>
+  </div>
 <% end %>
-  <%= f.link_to_add "Add Item", :materialitems, :class => 'btn btn-small btn-primary' %>
+  <%= f.link_to_add raw('<i class="icon-plus-sign"></i>'), :materialitems, :class => 'btn btn-small btn-primary' %>
+  <br><br>  <br><br>
+     <%= f.label "Labour Total:($)", :class=> 'strong' %> 
+    <%= f.text_field :labourtotal, :class => "input-small" %>
+     <%= f.label "Materials Total:($)", :class=> 'strong' %> 
+    <%= f.text_field :materialtotal,:class => "input-small" %>
+   <b><%= f.label "SubTotal:($)", :class=> 'strong' %></b> 
+    <%= f.text_field :subtotal, :class => "input-small"  %>
+  
 
-    <%= f.label :materialtotal %>
-    <%= f.text_field :materialtotal,:class => "input-mini" %>
-    <b><%= f.label :subtotal %></b>
-    <%= f.text_field :subtotal, :class => "input-mini"  %>
-   
-
- 
-  <%= f.submit "Submit" %>
+ <br><br>
+  <%= f.submit "Save Quote", :class => "btn btn-success" %>
  <% end %>
 
  <script type="text/javascript">
@@ -84,12 +90,15 @@
    muptotal: null,
    muphrate: null,
    subtotal: null,
+   progresspercent: null,
+   progresstotal: null,
   
    init: function(object) {
       this.rate = parseInt($(object).children('.rate').first().val(), 10);
       // var rate = $(object).children('.rate').first();
       this.hours =parseInt($(object).children('.hours').first().val(), 10);
       this.mupercent =parseInt($(object).children('.mupercent').first().val(), 10);
+      this.progresspercent = parseInt($(object).children('.progresspercent').first().val(), 10);
       if(isNaN(this.mupercent))
       {
         this.mupercent = 0;
@@ -102,6 +111,8 @@
       this.updateTotal(object);
       this.markupTotal(object);
       this.markuphourRate(object);
+      this.progresstotal = (this.progresspercent / 100) * this.subtotal;
+      this.progressTotal(object);
    },
    updateTotal: function(object) {
       $(object).children('.total').first().val(this.subtotal || 0);
@@ -111,6 +122,9 @@
    },
    markuphourRate: function(object) {
       $(object).children('.muphrate').first().val(this.muphrate || 0);
+   },
+   progressTotal: function(object) {
+      $(object).children('.progresstotal').first().val(this.progresstotal || 0);
    }
 }
 
@@ -118,6 +132,56 @@
 $('.labouritems input').live("keyup", function() {
    $('.labouritems').each( function(key,value){
       LabourItems.init(this);
+   });
+});
+
+
+
+ var MaterialItems = {
+   quantity: null,
+   materialprice: null,
+   total: null,
+ 
+  
+   init: function(object) {
+      this.rate = parseInt($(object).children('.rate').first().val(), 10);
+      // var rate = $(object).children('.rate').first();
+      this.hours =parseInt($(object).children('.hours').first().val(), 10);
+      this.mupercent =parseInt($(object).children('.mupercent').first().val(), 10);
+      this.progresspercent = parseInt($(object).children('.progresspercent').first().val(), 10);
+      if(isNaN(this.mupercent))
+      {
+        this.mupercent = 0;
+      }
+
+      this.total = this.rate * this.hours;
+      this.muptotal = (this.mupercent / 100) * this.total;
+      this.muphrate = this.muptotal / this.hours;
+      this.subtotal = this.total + this.muptotal;
+      this.updateTotal(object);
+      this.markupTotal(object);
+      this.markuphourRate(object);
+      this.progresstotal = (this.progresspercent / 100) * this.subtotal;
+      this.progressTotal(object);
+   },
+   updateTotal: function(object) {
+      $(object).children('.total').first().val(this.subtotal || 0);
+   },
+   markupTotal: function(object) {
+      $(object).children('.muptotal').first().val(this.muptotal || 0);
+   },
+   markuphourRate: function(object) {
+      $(object).children('.muphrate').first().val(this.muphrate || 0);
+   },
+   progressTotal: function(object) {
+      $(object).children('.progresstotal').first().val(this.progresstotal || 0);
+   }
+}
+
+//reactTochange for those inputs that you want to observe
+$('.materialitems input').live("keyup", function() {
+   $('.MaterialItems').each( function(key,value){
+      MaterialItems.init(this);
    });
 });
 

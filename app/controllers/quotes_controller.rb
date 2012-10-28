@@ -16,7 +16,7 @@ def index
 end
 
 def new
-	# @quote = Quote.new
+	 # @quote = Quote.new
 	@quote = @project.quotes.build
 	# @quote.contractors.build 
 	@project
@@ -85,6 +85,8 @@ def edit
 
 	@quote = Quote.find(params[:id])
 	@project 
+		# gon.materialitem = @materialitem 
+
 	
 end
 

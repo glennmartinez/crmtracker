@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20121011221301) do
   create_table "materialitems", :force => true do |t|
     t.string   "name"
     t.integer  "quantity"
+    t.integer  "unitprice"
     t.integer  "material_total"
     t.integer  "quote_id"
     t.integer  "supplier_id"

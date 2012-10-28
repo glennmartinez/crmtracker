@@ -3,6 +3,7 @@ class CreateMaterialitems < ActiveRecord::Migration
     create_table :materialitems do |t|
       t.string :name
       t.integer :quantity
+      t.integer :unitprice
       t.integer :material_total
       t.references :quote
       t.references :supplier
