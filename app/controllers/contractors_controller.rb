@@ -23,6 +23,7 @@ end
 
 def show
 	@contractor = Contractor.find(params[:id])
+	# @contlabouritems = 
 	    # @client = Client.find(params[:client_id])
 
 end
