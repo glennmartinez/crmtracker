@@ -1,0 +1,36 @@
+
+<div>
+<table class="table table-condensed">
+  <tr>
+    <th>Id</th>
+    <th>Invoice Date</th>
+    <th>Quote ID</th>
+  </tr>
+ 
+   <tr>
+    <td><%= @invoice.id %></td>
+    <td><%= @invoice.date %></td>
+    <td><%= @invoice.quote.id %></td>
+   </tr>
+
+ </table>   
+ <h4>Labouritems</h4>
+ <table class="table table-condensed">
+	<tr>
+		<th>Description</th>
+		<th>Total</th>
+		<th>Payment Due</th>
+		
+	</tr>
+		<%@quote.labouritems.each do | items| %>	
+	<tr>
+		<td><%= items.description %></td>
+		<td><%= items.total %> </td>
+		<td><%= items.progress_payment %> </td>
+
+	</tr>
+			
+		<% end %>
+ 	
+</table>
+

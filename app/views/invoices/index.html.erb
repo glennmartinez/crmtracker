@@ -1,0 +1,18 @@
+
+<table class="table table-condensed">
+  <tr>
+    <th>Id</th>
+    <th>Invoice Date</th>
+    <th>Quote ID</th>
+  </tr>
+<% @quote.invoices.each do |invoice| %> 
+   <tr>
+    <td><%= invoice.id %></td>
+    <td><%= invoice.date %></td>
+    <td><%= invoice.quote.id %></td>
+     <td><%= link_to 'Show', quote_invoice_path(@quote.id, invoice) %>
+    </td>
+   </tr>
+ <% end %>
+ </table>
+

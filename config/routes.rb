@@ -20,6 +20,7 @@ Crmtracker::Application.routes.draw do
   resources :quotes do
     resources :labouritems
     resources :materialitems
+    resources :invoices
   end
 
   post "/quote/add_contractor" => "quotes#add_contractor"

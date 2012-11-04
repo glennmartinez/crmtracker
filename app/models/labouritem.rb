@@ -6,6 +6,7 @@ class Labouritem < ActiveRecord::Base
       
   belongs_to :quote
   belongs_to :contractor
+  belongs_to :invoice
 
   attr_protected :id
    # accepts_nested_attributes_for :contractors

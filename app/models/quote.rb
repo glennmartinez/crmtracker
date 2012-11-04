@@ -11,12 +11,12 @@ class Quote < ActiveRecord::Base
   has_many :materialitems
   has_many :quoteships
   has_many :contractors, :through => :quoteships
+  has_many :invoices
 
   accepts_nested_attributes_for :project
   accepts_nested_attributes_for :contractors
   accepts_nested_attributes_for :labouritems
   accepts_nested_attributes_for :materialitems
-
 
  
 end

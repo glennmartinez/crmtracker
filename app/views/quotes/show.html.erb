@@ -30,6 +30,8 @@
 <%= link_to raw('<i class="icon-cog" style="font-size: 25px"></i>' "  Admin"), edit_project_quote_path(@project, @quote)   %> 
  <%= link_to raw('<i class="icon-time"style="font-size: 25px"></i>' "  Manage"), progress_manage_path(@project, @quote) %>
 <%= link_to raw('<i class="icon-hand-left" style="font-size: 25px"></i>' "  Back to Project"), client_project_path(@client, @project)  %>
+<%= link_to "Create Invoice", new_quote_invoice_path(@quote)  %>
+<%= link_to "Invoices", quote_invoices_path(@quote) %>
 </div>
  
 
