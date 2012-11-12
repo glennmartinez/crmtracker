@@ -1,7 +1,3 @@
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-
 rvm:
   - 1.9.3
 env:
@@ -15,10 +11,12 @@ before_script:
 	- sleep 3 # give xvfb some time to start
 	- rackup  # start a Web server
 	- sleep 3 # give Web server some time to bind to sockets, etc
-
-before_script:
   - mysql -e 'create database myapp_test'
   - psql -c 'create database myapp_test' -U postgres
 
+before_install:
+  - "sudo apt-get update"
+  - "sudo apt-get install libimage-exiftool-perl imagemagick wget ffmpeg zip unzip memcached" 
+
 script:
-  - RAILS_ENV=test bundle exec rake cucumber:ok --trace db:migrate 
+  - RAILS_ENV=test bundle exec rake cucumber:ok --trace 
