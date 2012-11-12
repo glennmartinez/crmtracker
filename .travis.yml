@@ -15,16 +15,10 @@ before_script:
 	- sleep 3 # give xvfb some time to start
 	- rackup  # start a Web server
 	- sleep 3 # give Web server some time to bind to sockets, etc
-task :travis do
-  ["rake cucumber"].each do |cmd|
-    puts "Starting to run #{cmd}..."
-    system("export DISPLAY=:99.0 && bundle exec #{cmd}")
-    raise "#{cmd} failed!" unless $?.exitstatus == 0
-  end
-end
 
-script:
-  - RAILS_ENV=test bundle exec rake cucumber:ok --trace db:migrate 
 before_script:
   - mysql -e 'create database myapp_test'
   - psql -c 'create database myapp_test' -U postgres
+
+script:
+  - RAILS_ENV=test bundle exec rake cucumber:ok --trace db:migrate 
