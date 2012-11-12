@@ -17,6 +17,8 @@ module NavigationHelpers
     when /^the clientspage/
       '/clients'
 
+    when /^the projectspage/
+      '/projects'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
