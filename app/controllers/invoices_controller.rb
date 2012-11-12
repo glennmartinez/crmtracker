@@ -24,6 +24,9 @@ def create
 			format.html { render action: "new"}
 		end
 	end	
+
+  # how to attach labouritems to the invoice
+	#  @quote.labouritems.all.each do |li| @invoice.labouritems.create li.attribtues
 end
 
 

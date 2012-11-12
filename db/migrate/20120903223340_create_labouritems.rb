@@ -7,6 +7,7 @@ class CreateLabouritems < ActiveRecord::Migration
       t.integer :contractor_id
       t.string  :contractor_name
       t.references :quote
+      t.references :invoice
       t.integer :contractor_rate
       t.integer :muppercent
       t.integer :muphourrate
@@ -24,6 +25,7 @@ class CreateLabouritems < ActiveRecord::Migration
       t.timestamps
     end
     add_index :labouritems, :quote_id
+    add_index :labouritems, :invoice_id
     
   end
 end

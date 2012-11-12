@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20121104050835) do
     t.integer  "contractor_id"
     t.string   "contractor_name"
     t.integer  "quote_id"
+    t.integer  "invoice_id"
     t.integer  "contractor_rate"
     t.integer  "muppercent"
     t.integer  "muphourrate"
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20121104050835) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "labouritems", ["invoice_id"], :name => "index_labouritems_on_invoice_id"
   add_index "labouritems", ["quote_id"], :name => "index_labouritems_on_quote_id"
 
   create_table "materialitems", :force => true do |t|
