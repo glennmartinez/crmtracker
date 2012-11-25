@@ -8,45 +8,31 @@ def index
 end
 
 def new
-	@invoice = @quote.invoices.build
-
-
+	@invoice = Invoice.new(:quote => @quote)
 end
 
 def create
 	@invoice = @quote.invoices.build(params[:invoice])
 
 	@quote.labouritems.all.each do |li|
-		@invoice.labouritems.create li.attributes
+		@invoice.labouritems.build li.attributes
 	end
- 
- 	respond_to do |format|
-		if @invoice.save
-			format.html {redirect_to [@quote, @invoice], notice: 'Invoice was successfully create.'}
-
-		else
-			format.html { render action: "new"}
-		end
-	end	
-
-  # how to attach labouritems to the invoice
-	#  @quote.labouritems.all.each do |li| @invoice.labouritems.create li.attribtues
+ 	if @invoice.save
+		redirect_to [@quote, @invoice], notice: 'Invoice was successfully create.'
+	else
+		render action: "new"
+	end
 end
 
-
-
 def show
-
-	@invoice = Invoice.find(params[:id])
-  @labouritems = @quote.labouritems
-	
+  	@invoice = Invoice.find(params[:id])
+  	@labouritems = @quote.labouritems
 end
 
 private
-    def find_quote
-      @quote = Quote.find(params[:quote_id])
-    end
 
-
+def find_quote
+  @quote = Quote.find(params[:quote_id])
+end
 end
 
