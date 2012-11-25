@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
                                        :edit,
                                        :update,
                                        :destroy]
-
+  before_filter :restrict_user, :except => :new
   def index
     @projects = Project.all
 
@@ -56,6 +56,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = @client.projects.build(params[:project])
+    @project.user = current_user
 
     respond_to do |format|
       if @project.save
@@ -97,6 +98,14 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+def restrict_user
+  if find_project.user != current_user
+    flash[:notice] = "You are not supposed to do that. Go to the naughty corner."
+    redirect_to clients_path 
+  end
+end
+
     def find_client
       @client = Client.find(params[:client_id])
     end
