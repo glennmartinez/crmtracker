@@ -6,11 +6,13 @@ Feature: Creating Clients
     Background:
         Given I am on the homepage
 
-    Scenario: Creating a client
+    Scenario: Client can navigate to the create project screen
         When I go to the clientspage
         And I follow "New Client"
         And I fill in "Firstname" with "First Client"
         And I fill in "Email" with "firstclient@gmail.com"
         And I press "Save"
         And I should see "Client has been created." 
+   
+
 

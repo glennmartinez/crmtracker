@@ -15,6 +15,10 @@ end
 
 def create
 	@invoice = @quote.invoices.build(params[:invoice])
+
+	@quote.labouritems.all.each do |li|
+		@invoice.labouritems.create li.attributes
+	end
  
  	respond_to do |format|
 		if @invoice.save

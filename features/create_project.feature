@@ -9,10 +9,27 @@ Feature: Creating a Project
         When I go to the clientspage
 
 
-    Scenario: Creating a project for a client
+    Scenario: User can create a project
         When I follow "Show"
         And I should see "Johnny"
         And I should see "Create Project"
+        And I follow "Create Project"
+        And I fill in "Name" with "My first project"
+        And I fill in "Description" with "This is my first project"
+        And I press "Save"
+        And I should see "Project was successfully created"
+
+    Scenario: Client can view their projects in a list
+        When I follow "Show"
+        And I should see "Johnny"
+        And I follow "Create Project"
+        And I fill in "Name" with "My first project"
+        And I fill in "Description" with "This is my first project"
+        And I press "Save"
+        And I should see "Project was successfully created"
+        And I follow "Johnny"
+        And I should see "My first project"
+
 
      
 

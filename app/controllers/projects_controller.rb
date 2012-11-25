@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects }
+      format.html { redirect_to projects, notice: 'Project has been deleted.' }
       format.json { head :no_content }
     end
   end
