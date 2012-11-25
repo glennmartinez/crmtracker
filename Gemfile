@@ -16,6 +16,7 @@ gem "jquery-ui-rails", "~> 2.0.0"
 gem 'rails3-jquery-autocomplete'
 gem 'prawn'
 gem 'prawnto'
+gem 'devise'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
