@@ -15,7 +15,8 @@ def create
 	@invoice = @quote.invoices.build(params[:invoice])
 
 	@quote.labouritems.all.each do |li|
-		@invoice.labouritems.build li.attributes
+		item =@invoice.labouritems.build li.attributes
+		item.update_attribute(:quote_id, "")
 	end
  	if @invoice.save
 		redirect_to [@quote, @invoice], notice: 'Invoice was successfully create.'
@@ -26,7 +27,7 @@ end
 
 def show
   	@invoice = Invoice.find(params[:id])
-  	@labouritems = @quote.labouritems
+  	@labouritems = @invoice.labouritems
 end
 
 private

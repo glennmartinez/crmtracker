@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
                                        :edit,
                                        :update,
                                        :destroy]
-  before_filter :restrict_user, :except => :new
+  before_filter :restrict_user, :except => [:new,:index]
   def index
     @projects = Project.all
 
@@ -111,9 +111,8 @@ end
     end
 
   private
-    def find_project
+  def find_project
      @project = @client.projects.find(params[:id])
 
-    
   end
 end
