@@ -4,6 +4,7 @@ Feature: Creating Clients
     I want to create them easily
 
     Background:
+        Given I am a new, authenticated user
         Given I am on the homepage
 
     Scenario: Client can navigate to the create project screen

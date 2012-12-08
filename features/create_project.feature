@@ -4,7 +4,8 @@ Feature: Creating a Project
     I want to create them easily
 
     Background:
-    	Given there is a client called "Johnny"
+        Given I am a new, authenticated user
+        Given there is a client called "Johnny"
         Given I am on the homepage
         When I go to the clientspage
 

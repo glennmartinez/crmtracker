@@ -4,6 +4,7 @@ Feature: Creating a Project
     I want to create them easily
 
     Background:
+        Given I am a new, authenticated user
     	Given there is a client called "Johnny"
         And that client has a project:
         | name               | description           |

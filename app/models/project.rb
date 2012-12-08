@@ -3,6 +3,6 @@ class Project < ActiveRecord::Base
 
   belongs_to :client
   belongs_to :user
-  has_many :quotes
+  has_many :quotes,:dependent => :destroy
   has_many :projectships
 end

@@ -5,13 +5,13 @@ class ProjectsController < ApplicationController
                                         :new,
                                         :edit,
                                         :update,
-                                        :destroy,
                                         :create]
   before_filter :find_project, :only => [:show,
                                        :edit,
-                                       :update,
-                                       :destroy]
-  before_filter :restrict_user, :except => [:new,:index]
+                                       :update]
+  
+  before_filter :restrict_user, :except => [:new,:index, :create, :destroy]
+
   def index
     @projects = Project.all
 
@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to [@client,@project], notice: 'Project was successfully updated.' }
         # format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -106,13 +106,13 @@ def restrict_user
   end
 end
 
-    def find_client
-      @client = Client.find(params[:client_id])
-    end
+def find_client
+  @client = Client.find(params[:client_id])
+end
 
-  private
-  def find_project
-     @project = @client.projects.find(params[:id])
+private
+def find_project
+   @project = @client.projects.find(params[:id])
 
-  end
+end
 end

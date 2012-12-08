@@ -7,11 +7,11 @@ class Quote < ActiveRecord::Base
 
   belongs_to :project
 
-  has_many :labouritems
-  has_many :materialitems
-  has_many :quoteships
+  has_many :labouritems,:dependent => :destroy
+  has_many :materialitems, :dependent => :destroy
+  has_many :quoteships, :dependent => :destroy
   has_many :contractors, :through => :quoteships
-  has_many :invoices
+  has_many :invoices, :dependent => :destroy
 
   accepts_nested_attributes_for :project
   accepts_nested_attributes_for :contractors
