@@ -9,10 +9,11 @@ Feature: Creating Clients
 
     Scenario: User can register
         And I fill in "user_email" with "test@gmail.com"
+        And I fill in "user_username" with "test g"
         And I fill in "user_password" with "testing"
         And I fill in "user_password_confirmation" with "testing"
         And I press "Sign up"
-        Then I should see "Current User: test@gmail.com"   
+        Then I should see "Current User: test g"   
 
 
 
