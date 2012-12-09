@@ -15,7 +15,7 @@
     <div class="headerlogin">
       <% if user_signed_in? %>
        <%=  "Current User:"   %>
-       <%= current_user.email %>
+       <%= current_user.username %>
        <b><%=link_to "Log out", destroy_user_session_path, :method => :delete %></b>
         
       <% else %>
@@ -66,9 +66,12 @@
      </div><!--/span-->
      <div class="span11">
        <div class="hero-unit">
+          <% flash.each do |key, value| %>
+            <div class='flash' id='<%= key %>'>
+              <%= value %>
 
-         <p class="notice"><%= notice %></p>
-        <!--  <p class="alert"><%= alert %></p> -->
+            </div>
+          <% end %>
        	<%= yield %>
          
 

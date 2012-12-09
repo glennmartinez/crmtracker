@@ -72,7 +72,7 @@ def create
     
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to [@project,@quote ], notice: 'Project was successfully created.'  }
+        format.html { redirect_to [@project,@quote ], notice: 'Quote was successfully created.'  }
         # format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
@@ -110,7 +110,7 @@ def update
 	 	# @quote.update_attributes(params[:note])
 	respond_to do |format|
       if @quote.update_attributes(params[:quote])
-        format.html { redirect_to [@project, @quote], notice: 'quote was successfully created.' }
+        format.html { redirect_to [@project, @quote], notice: 'Quote was successfully updated.' }
         format.json { render json: @quote, status: :created, location: @quote }
       else
         format.html { render action: "new" }

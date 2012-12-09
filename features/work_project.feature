@@ -7,7 +7,7 @@ Feature: Creating a Project
         Given I am a new, authenticated user
     	Given there is a client called "Johnny"
         And that client has a project:
-        | name               | description           |
+        | name               | description           | 
         | My Current Project |  This is my project   |
         Given I am on the homepage
         When I go to the clientspage

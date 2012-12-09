@@ -58,15 +58,13 @@ class ProjectsController < ApplicationController
     @project = @client.projects.build(params[:project])
     @project.user = current_user
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to [@client,@project], notice: 'Project was successfully created.'  }
-        # format.json { render json: @project, status: :created, location: @project }
-      else
-        format.html { render action: "new" }
-        # format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
+       if @project.save
+         flash[:notice] = "Project was successfully created." 
+         redirect_to [@client, @project]
+       else
+         render action: "new" 
+       end
+     
   end
 
   # PUT /projects/1
@@ -74,15 +72,15 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    respond_to do |format|
-      if @project.update_attributes(params[:project])
-        format.html { redirect_to [@client,@project], notice: 'Project was successfully updated.' }
+       if @project.update_attributes(params[:project])
+        flash[:notice] = "Project was successfully updated."
+        redirect_to [@client,@project] 
         # format.json { head :no_content }
       else
         format.html { render action: "edit" }
         # format.json { render json: @project.errors, status: :unprocessable_entity }
       end
-    end
+     
   end
 
   # DELETE /projects/1

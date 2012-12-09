@@ -18,7 +18,7 @@
     <%= f.label :description %>
     <%= f.text_field :description %>
     <%= f.label :status %>
-      <%= f.select :status, [['Active', 'active'],['Closed','closed']],:class => "btn dropdown-toggle" %>
+      <%= f.select :status, [['Active', 'active'],['Closed','closed']] %>
      <br><br>
     <%= f.submit "Save", :class => "btn btn-success" %>
  <% end %>
